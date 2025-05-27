@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Tracker
-//
-//  Created by Thais Canguçu on 27/05/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
