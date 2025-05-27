@@ -30,10 +30,10 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    func createProduct(id: Int64, name: String, priceBuy: Double, priceSell: Double, stock: Int64) -> Product {
+    func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double, stock: Int64) -> Product {
         let product = Product(context: viewContext)
         
-        product.id = id
+        product.id = UUID()
         product.name = name
         product.priceBuy = priceBuy
         product.priceSell = priceSell
