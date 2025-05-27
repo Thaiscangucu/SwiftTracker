@@ -8,7 +8,7 @@ class ContentViewModel: ObservableObject {
         products = CoreDataController.shared.fetchAllProducts()
     }
     
-    func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double, stock: Int64) {
+    func createProduct(id: Int64, name: String, priceBuy: Double, priceSell: Double, stock: Int64) {
         let result = CoreDataController.shared.createProduct(id: id, name: name, priceBuy: priceBuy, priceSell: priceSell, stock: stock)
         self.products.append(result)
     }
