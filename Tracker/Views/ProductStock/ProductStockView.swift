@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CreateView: View {
+struct ProductStockView: View {
     @StateObject var viewModel = ContentViewModel()
     @State private var showingSheet = false
     
@@ -9,16 +9,11 @@ struct CreateView: View {
         NavigationStack {
             VStack {
                 List(viewModel.products) { product in
-                    HStack(alignment: .center) {
-                        
-                        VStack(alignment: .leading) {
-                            Text(product.name ?? "No name found.")
-                                .bold()
-                            //TODO: - Mostrar Numeros
-                            Text(product.name ?? "No products in stock.")
-                                .font(.caption)
-                        }
-                        .padding(.leading, 5)
+                    Section {
+                        ProductView(product: product)
+                    } header: {
+                        Text(product.name ?? "No name found.")
+                            .font(.headline)
                     }
                     .swipeActions {
                         Button(role: .destructive) {
@@ -28,12 +23,12 @@ struct CreateView: View {
                         }
                     }
                 }
+                
                 .listStyle(.insetGrouped)
             }
             .navigationTitle("Product")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    
                     Button {
                         showingSheet.toggle()
                     } label: {
@@ -55,5 +50,5 @@ struct CreateView: View {
 }
 
 #Preview {
-    CreateView()
+    ProductStockView()
 }

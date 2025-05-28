@@ -17,7 +17,7 @@ struct CreateProductForm: View {
                     TextField("Name", text: $name)
                     TextField("Stock", value: $stock, format: .number)
                     TextField("Price Buy", value: $priceBuy, format: .number)
-                    TextField("Price Sell", value: $priceBuy, format: .number)
+                    TextField("Price Sell", value: $priceSell, format: .number)
                 }
             }
             .toolbar {
