@@ -10,13 +10,14 @@ class CoreDataController: ObservableObject {
         persistentContainer.viewContext
     }
     
-    init() {
-        persistentContainer = NSPersistentContainer(name: "Product")
+    private init() {
+        persistentContainer = NSPersistentContainer(name: "Tracker")
         
         persistentContainer.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Could not load CoreData stack: \(error.localizedDescription)")
             }
+            
         }
     }
     

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CreateProductView: View {
+struct CreateProductForm: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ContentViewModel()
@@ -22,7 +22,7 @@ struct CreateProductView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Add") {
+                    Button("Save") {
                         viewModel.createProduct(id: UUID(), name: name, priceBuy: priceBuy, priceSell: priceSell, stock: stock)
                         
                         dismiss()
@@ -42,5 +42,5 @@ struct CreateProductView: View {
 }
 
 #Preview {
-    CreateProductView()
+    CreateProductForm()
 }
