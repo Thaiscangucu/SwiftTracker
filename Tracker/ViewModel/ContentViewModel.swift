@@ -13,7 +13,7 @@ class ContentViewModel: ObservableObject {
         self.products.append(result)
     }
     
-    func deleteToDo(_ product: Product) {
+    func deleteProduct(_ product: Product) {
         CoreDataController.shared.deleteProduct(product)
     }
 }
