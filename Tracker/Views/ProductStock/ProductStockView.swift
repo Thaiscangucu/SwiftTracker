@@ -11,10 +11,7 @@ struct ProductStockView: View {
                 List(viewModel.products) { product in
                     Section {
                         ProductView(product: product)
-                    } header: {
-                        Text(product.name ?? "No name found.")
-                            .font(.headline)
-                    }
+                    } 
                     .swipeActions {
                         Button(role: .destructive) {
                             viewModel.deleteProduct(product)
