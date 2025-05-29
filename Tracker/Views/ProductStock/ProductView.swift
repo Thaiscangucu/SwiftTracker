@@ -4,9 +4,9 @@ struct ProductView: View {
     @ObservedObject public var product: Product
     @ObservedObject var viewModel = ContentViewModel()
     
-
     var body: some View {
         Grid (alignment: .leading) {
+            
             Text(product.name ?? "No name found.")
                 .font(.title3)
                 .bold()
@@ -15,19 +15,22 @@ struct ProductView: View {
             Text("Stock: \(product.stock, specifier: "%.0f")")
                 .font(.callout)
                 .padding(.bottom, 0.5)
+                .padding(.top)
             Text("Price (bought): R$\(product.priceBuy, specifier: "%.2f")")
                 .font(.callout)
                 .padding(.bottom, 0.5)
-            //.padding(.bottom, UIScreen.main.bounds.height * 0.02)
             Text("Price (sell): R$\(product.priceSell, specifier: "%.2f"))")
                 .font(.callout)
-                .padding(.bottom, 0.5)
+                .padding(.bottom)
+            Divider()
             Stepper("Sold: \(product.sold, specifier: "%.0f")", onIncrement: {
                 viewModel.sellProduct(product)
                 print(product.sold)
             }, onDecrement: {
                 viewModel.undoSell(product)
             })
+            .padding(.top)
+            .padding(.bottom, 0.5)
             
         }
     }
