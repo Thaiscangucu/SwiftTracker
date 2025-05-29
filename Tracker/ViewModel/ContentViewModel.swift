@@ -1,6 +1,8 @@
 import Foundation
 import CoreData
 
+//MARK: -  Content View Model
+
 class ContentViewModel: ObservableObject {
     @Published var products: [Product] = []
     
