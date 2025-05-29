@@ -1,7 +1,7 @@
 import CoreData
 import Foundation
 
-//This class is responsable to acess the model
+//MARK: - Control data persistence
 class CoreDataController: ObservableObject {
     static let shared = CoreDataController()
     
@@ -21,6 +21,9 @@ class CoreDataController: ObservableObject {
         }
     }
     
+    //MARK: - Func that interacts with Product data
+    
+    /*Save after changing the content*/
     func saveContext() {
         if viewContext.hasChanges {
             do {
@@ -31,6 +34,7 @@ class CoreDataController: ObservableObject {
         }
     }
     
+    /*Cerate product and saves it*/
     func createProduct(id: UUID, name: String, priceBuy: Double,  priceSell: Double, sold: Double, stock: Double) -> Product {
         let product = Product(context: viewContext)
         
@@ -46,6 +50,7 @@ class CoreDataController: ObservableObject {
         
     }
     
+    /*Search for products*/
     func fetchAllProducts() -> [Product] {
         let fetchRequest: NSFetchRequest<Product> = Product.fetchRequest()
         
@@ -63,6 +68,7 @@ class CoreDataController: ObservableObject {
         saveContext()
     }
     
+    /*Control the quantity of products*/
     func sellProduct(_ product: Product){
         if product.sold > product.stock {
             print("Unable to Sell")
