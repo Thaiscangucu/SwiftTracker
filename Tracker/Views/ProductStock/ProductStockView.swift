@@ -3,11 +3,23 @@ import SwiftUI
 struct ProductStockView: View {
     @StateObject var viewModel = ContentViewModel()
     @State private var showingSheet = false
-        
+    
+    @State var searchText: String = ""
+    
+    var searchReults: [Product] {
+        guard !searchText.isEmpty else {
+            return viewModel.products
+        }
+
+        return viewModel.products.filter {
+            $0.name!.localizedCaseInsensitiveContains(searchText)
+        }
+    }
+
     var body: some View {
         NavigationStack {
             VStack {
-                List(viewModel.products) { product in
+                List(searchReults) { product in
                     Section {
                         ProductView(product: product)
                     } 
@@ -41,6 +53,7 @@ struct ProductStockView: View {
             .onAppear {
                 viewModel.getProduct()
             }
+            .searchable(text: $searchText)
         }
     }
 }
