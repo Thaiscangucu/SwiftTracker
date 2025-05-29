@@ -31,13 +31,14 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double, stock: Int64) -> Product {
+    func createProduct(id: UUID, name: String, priceBuy: Double,  priceSell: Double, sold: Double, stock: Double) -> Product {
         let product = Product(context: viewContext)
         
         product.id = UUID()
         product.name = name
         product.priceBuy = priceBuy
         product.priceSell = priceSell
+        product.sold = sold
         product.stock = stock
         
         saveContext()
@@ -60,6 +61,26 @@ class CoreDataController: ObservableObject {
     func deleteProduct(_ product: Product){
         viewContext.delete(product)
         saveContext()
+    }
+    
+    func sellProduct(_ product: Product){
+        if product.sold > product.stock {
+            print("Unable to Sell")
+        }else{
+            product.stock -= 1
+            product.sold += 1
+            saveContext()
+        }
+    }
+    
+    func undoSell(_ product: Product){
+        if product.sold == 0 && product.stock == 0 {
+            print("Unable to undo")
+        }else{
+            product.stock -= 1
+            product.sold += 1
+            saveContext()
+        }
     }
     
     
