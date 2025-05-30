@@ -83,11 +83,10 @@ class CoreDataController: ObservableObject {
         if product.sold == 0 && product.stock == 0 {
             print("Unable to undo")
         }else{
-            product.stock -= 1
-            product.sold += 1
+            product.stock += 1
+            product.sold -= 1
             saveContext()
         }
     }
-    
-    
+
 }
