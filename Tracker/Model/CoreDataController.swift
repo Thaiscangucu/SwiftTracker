@@ -80,7 +80,7 @@ class CoreDataController: ObservableObject {
     }
     
     func undoSell(_ product: Product){
-        if product.sold == 0 && product.stock == 0 {
+        if product.sold == 0 || product.stock == 0 {
             print("Unable to undo")
         }else{
             product.stock += 1

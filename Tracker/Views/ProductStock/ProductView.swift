@@ -28,7 +28,6 @@ struct ProductView: View {
                 viewModel.sellProduct(product)
             }, onDecrement: {
                 viewModel.undoSell(product)
-                print("Decrement")
             })
             .padding(.top)
             .padding(.bottom, 0.5)
