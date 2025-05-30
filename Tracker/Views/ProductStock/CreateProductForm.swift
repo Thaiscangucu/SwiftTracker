@@ -1,10 +1,13 @@
 import SwiftUI
 
+//MARK: - Create Product View
+//TODO: - Fix number input
 struct CreateProductForm: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ContentViewModel()
     
+    /*Atributes of product*/
     @State var stock: Double = 0
     @State var sold: Double = 0
     @State var priceSell: Double = 0
@@ -15,6 +18,7 @@ struct CreateProductForm: View {
         NavigationStack{
             VStack {
                 Form {
+                    /*Get user input*/
                     TextField("Name", text: $name)
                     TextField("Stock", value: $stock, format: .number)
                     TextField("Price Buy", value: $priceBuy, format: .number)
@@ -24,6 +28,7 @@ struct CreateProductForm: View {
             }
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
+                    /*Save Button*/
                     Button("Save") {
                         viewModel.createProduct(id: UUID(), name: name, priceBuy: priceBuy, priceSell: priceSell,
                             sold: sold, stock: stock)
@@ -31,6 +36,7 @@ struct CreateProductForm: View {
                         dismiss()
                     }
                 }
+                /*Cancel Button*/
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         dismiss()

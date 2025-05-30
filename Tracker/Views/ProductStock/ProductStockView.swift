@@ -5,7 +5,7 @@ struct ProductStockView: View {
     @StateObject var viewModel = ContentViewModel()
     @State private var showingSheet = false
     
-    @State var searchText: String = ""
+    @State var searchText: String = "" // Used in Search bar
     
     var searchReults: [Product] {
         guard !searchText.isEmpty else {
