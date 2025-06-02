@@ -4,14 +4,24 @@ struct ProductView: View {
     @ObservedObject public var product: Product
     @ObservedObject var viewModel = ContentViewModel()
     
+    @State private var showingEditSheet: Bool = false
+    
     
     var body: some View {
         Grid (alignment: .leading) {
-            
-            Text(product.name ?? "No name found.")
-                .font(.title3)
-                .bold()
-                .padding(.top, 0.5)
+            HStack{
+                Text(product.name ?? "No name found.")
+                    .font(.title3)
+                    .bold()
+                    .padding(.top, 0.5)
+                Button{
+                    showingEditSheet.toggle()
+                }label: {
+                    //TODO: -  Format Edit Icon
+                    Image(systemName: "square")
+                }
+                
+            }
             Divider()
             Text("Stock: \(product.stock, specifier: "%.0f")")
                 .font(.callout)
@@ -31,6 +41,11 @@ struct ProductView: View {
             })
             .padding(.top)
             .padding(.bottom, 0.5)
+            .sheet(isPresented: $showingEditSheet, onDismiss: {
+                viewModel.getProduct()
+            }) {
+                EditProductVIew(product: product)
+            }
             
         }
     }

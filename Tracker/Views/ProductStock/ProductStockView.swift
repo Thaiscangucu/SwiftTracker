@@ -5,7 +5,7 @@ struct ProductStockView: View {
     
     @StateObject var viewModel = ContentViewModel()
     @State private var showingSheet: Bool = false
-    @State private var showingEditSheet: Bool = false
+    
     
     @State var searchText: String = "" // Used in Search bar
     
@@ -36,12 +36,6 @@ struct ProductStockView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $showingEditSheet, onDismiss: {
-                    viewModel.getProduct()
-                }) {
-                    CreateProductForm()
-                }
-                
                 
                 .listStyle(.insetGrouped)
             }

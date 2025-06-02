@@ -56,6 +56,7 @@ class CoreDataController: ObservableObject {
         
         do {
             let result = try viewContext.fetch(fetchRequest)
+            saveContext()
             return result
         } catch {
             print("Error fetching Products: \(error.localizedDescription)")

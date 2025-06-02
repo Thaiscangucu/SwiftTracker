@@ -32,6 +32,25 @@ struct EditProductVIew: View {
             TextField("Price Sell: R$ \(product.priceSell, specifier: "%.2f")", value: $priceSell, format: .number)
             TextField("Sold: \(product.sold, specifier: "%.0f")", value: $sold, format: .number)
         }
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                /*Save Button*/
+                Button("Save") {
+                    //JUST UPDATE THE PRODUCT, THIS FUNCTION WILL CREATE A NEW PRODUCT W A NEW UUID
+                    
+                    
+//                    viewModel.createProduct(id: UUID(), name: name, priceBuy: priceBuy, priceSell: priceSell,
+//                        sold: sold, stock: stock)
+                    dismiss()
+                }
+            }
+            /*Cancel Button*/
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+        }
     }
 }
 
