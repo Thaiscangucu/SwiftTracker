@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ProductStockView: View {
     
+    
     @StateObject var viewModel = ContentViewModel()
     @State private var showingSheet: Bool = false
     @State private var showingEditSheet: Bool = false
@@ -12,39 +13,36 @@ struct ProductStockView: View {
         guard !searchText.isEmpty else {
             return viewModel.products
         }
-
+        
         return viewModel.products.filter {
             $0.name!.localizedCaseInsensitiveContains(searchText)
         }
     }
-
+    
     var body: some View {
+        
         NavigationStack {
             VStack {
-                Button {
-                    showingEditSheet.toggle()
-                } label: {
-                    List(searchReults) { product in
-                        Section {
-                            ProductView(product: product)
-                        }
-                        .swipeActions {
-                            Button(role: .destructive) {
-                                viewModel.deleteProduct(product)
-                            } label: {
-                                Image(systemName: "trash")
-                            }
+                
+                List(searchReults) { product in
+                    Section {
+                        ProductView(product: product)
+                    }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            viewModel.deleteProduct(product)
+                        } label: {
+                            Image(systemName: "trash")
                         }
                     }
-
                 }
                 .sheet(isPresented: $showingEditSheet, onDismiss: {
                     viewModel.getProduct()
                 }) {
                     CreateProductForm()
                 }
-
-                                
+                
+                
                 .listStyle(.insetGrouped)
             }
             .navigationTitle("Product")
@@ -68,8 +66,10 @@ struct ProductStockView: View {
             }
             .searchable(text: $searchText)
         }
+        
     }
 }
+
 
 #Preview {
     ProductStockView()
