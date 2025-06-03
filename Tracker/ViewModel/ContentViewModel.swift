@@ -16,8 +16,8 @@ class ContentViewModel: ObservableObject {
         self.products.append(result)
     }
     
-    func editProduct(product: Product, name: String, priceBuy: Double, priceSell: Double,sold: Double, stock: Double) {
-        CoreDataController.shared.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock)
+    func editProduct(product: Product, name: String, priceBuy: Double, priceSell: Double, stock: Double) {
+        let result = CoreDataController.shared.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, stock: stock)
         
     }
     

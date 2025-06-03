@@ -51,12 +51,11 @@ class CoreDataController: ObservableObject {
     }
     
     /*Edidit product funcion*/
-    func editProduct(product: Product, name: String, priceBuy: Double,  priceSell: Double, sold: Double, stock: Double)  {
+    func editProduct(product: Product, name: String, priceBuy: Double,  priceSell: Double, stock: Double)  {
         
         product.name = name
         product.priceBuy = priceBuy
         product.priceSell = priceSell
-        product.sold = sold
         product.stock = stock
         
         saveContext()

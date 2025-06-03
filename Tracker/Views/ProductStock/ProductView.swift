@@ -9,12 +9,14 @@ struct ProductView: View {
     
     var body: some View {
         Grid (alignment: .leading) {
-            HStack{
+            HStack (){
                 Text(product.name ?? "No name found.")
                     .font(.title3)
                     .bold()
                     .padding(.top, 0.5)
+                Spacer()
                 Image(systemName: "slider.horizontal.3")
+                    .foregroundColor(.accent)
                     .onTapGesture {
                         showingEditSheet.toggle()
                         

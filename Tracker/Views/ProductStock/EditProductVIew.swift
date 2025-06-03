@@ -28,25 +28,40 @@ struct EditProductVIew: View {
                 Form {
                     /*Let the user acess only the atribute he wants*/
                     //TODO: - FORMATAR a Tela
-                    TextField("Name: \(product.name ?? "")", text: $name)
-                    TextField("Stock: \(product.stock, specifier: "%.0f")", value: $stock, format: .number)
-                    TextField("Price Buy: R$ \(product.priceBuy, specifier: "%.2f")", value: $priceBuy, format: .number)
-                    TextField("Price Sell: R$ \(product.priceSell, specifier: "%.2f")", value: $priceSell, format: .number)
-                    TextField("Sold: \(product.sold, specifier: "%.0f")", value: $sold, format: .number)
-                }
-                Button {
-                    viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock)
-                    dismiss()
-                }label: {
-                    Text("SAVE")
+                    HStack{
+                        Text("Name: ")
+                        TextField("", text: $name)
+                            .foregroundStyle(.secondary)
+
+                    }
+                    HStack{
+                        Text("Stock: ")
+                        TextField("", value: $stock, format: .number)
+                            .foregroundStyle(.secondary)
+                    }
+                    HStack{
+                        Text("Price Buy: R$")
+                        TextField("", value: $priceBuy, format: .number)
+                            .foregroundStyle(.secondary)
+
+                    }
+                    HStack{
+                        Text("Price Sell: R$")
+                        TextField("", value: $priceSell, format: .number)
+                            .foregroundStyle(.secondary)
+
+
+                    }
                 }
             }
-            
+            .navigationTitle("Edit")
+            .navigationBarTitleDisplayMode(.inline)
+
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     /*Save Button*/
                     Button("Save") {
-                        viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock)
+                        viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, stock: stock)
                         dismiss()
                     }
                 }
