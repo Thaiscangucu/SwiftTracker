@@ -15,13 +15,10 @@ struct ProductView: View {
                     .bold()
                     .padding(.top, 0.5)
                 Image(systemName: "slider.horizontal.3")
-
-                Button{
-                    showingEditSheet.toggle()
-                }label: {
-                    //TODO: -  Format Edit Icon
-                    Image(systemName: "slider.horizontal.3")
-                }
+                    .onTapGesture {
+                        showingEditSheet.toggle()
+                        
+                    }
                 
             }
             Divider()
@@ -49,6 +46,9 @@ struct ProductView: View {
                 EditProductVIew(product: product)
             }
             
+        }
+        .onAppear(){
+            viewModel.getProduct()
         }
     }
 }
