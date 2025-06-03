@@ -14,6 +14,8 @@ struct ProductView: View {
                     .font(.title3)
                     .bold()
                     .padding(.top, 0.5)
+                Image(systemName: "slider.horizontal.3")
+
                 Button{
                     showingEditSheet.toggle()
                 }label: {
