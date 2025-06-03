@@ -23,24 +23,30 @@ struct EditProductVIew: View {
     }
     
     var body: some View {
-        Form {
-            /*Let the user acess only the atribute he wants*/
-            //TODO: - FORMATAR
-            TextField("Name: \(product.name ?? "")", text: $name)
-            TextField("Stock: \(product.stock, specifier: "%.0f")", value: $stock, format: .number)
-            TextField("Price Buy: R$ \(product.priceBuy, specifier: "%.2f")", value: $priceBuy, format: .number)
-            TextField("Price Sell: R$ \(product.priceSell, specifier: "%.2f")", value: $priceSell, format: .number)
-            TextField("Sold: \(product.sold, specifier: "%.0f")", value: $sold, format: .number)
+        VStack{
+            
+            
+            Form {
+                /*Let the user acess only the atribute he wants*/
+                //TODO: - FORMATAR
+                TextField("Name: \(product.name ?? "")", text: $name)
+                TextField("Stock: \(product.stock, specifier: "%.0f")", value: $stock, format: .number)
+                TextField("Price Buy: R$ \(product.priceBuy, specifier: "%.2f")", value: $priceBuy, format: .number)
+                TextField("Price Sell: R$ \(product.priceSell, specifier: "%.2f")", value: $priceSell, format: .number)
+                TextField("Sold: \(product.sold, specifier: "%.0f")", value: $sold, format: .number)
+            }
+            Button {
+                viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock)
+                dismiss()
+            }label: {
+                Text("SAVE")
+            }
         }
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 /*Save Button*/
                 Button("Save") {
-                    //JUST UPDATE THE PRODUCT, THIS FUNCTION WILL CREATE A NEW PRODUCT W A NEW UUID
-                    
-                    
-//                    viewModel.createProduct(id: UUID(), name: name, priceBuy: priceBuy, priceSell: priceSell,
-//                        sold: sold, stock: stock)
+                    viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock)
                     dismiss()
                 }
             }
