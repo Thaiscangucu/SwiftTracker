@@ -18,7 +18,7 @@ struct ProductView: View {
                     showingEditSheet.toggle()
                 }label: {
                     //TODO: -  Format Edit Icon
-                    Image(systemName: "square")
+                    Image(systemName: "slider.horizontal.3")
                 }
                 
             }
