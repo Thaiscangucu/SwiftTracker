@@ -23,37 +23,38 @@ struct EditProductVIew: View {
     }
     
     var body: some View {
-        VStack{
-            
-            
-            Form {
-                /*Let the user acess only the atribute he wants*/
-                //TODO: - FORMATAR
-                TextField("Name: \(product.name ?? "")", text: $name)
-                TextField("Stock: \(product.stock, specifier: "%.0f")", value: $stock, format: .number)
-                TextField("Price Buy: R$ \(product.priceBuy, specifier: "%.2f")", value: $priceBuy, format: .number)
-                TextField("Price Sell: R$ \(product.priceSell, specifier: "%.2f")", value: $priceSell, format: .number)
-                TextField("Sold: \(product.sold, specifier: "%.0f")", value: $sold, format: .number)
-            }
-            Button {
-                viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock)
-                dismiss()
-            }label: {
-                Text("SAVE")
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                /*Save Button*/
-                Button("Save") {
+        NavigationStack{
+            VStack{
+                Form {
+                    /*Let the user acess only the atribute he wants*/
+                    //TODO: - FORMATAR a Tela
+                    TextField("Name: \(product.name ?? "")", text: $name)
+                    TextField("Stock: \(product.stock, specifier: "%.0f")", value: $stock, format: .number)
+                    TextField("Price Buy: R$ \(product.priceBuy, specifier: "%.2f")", value: $priceBuy, format: .number)
+                    TextField("Price Sell: R$ \(product.priceSell, specifier: "%.2f")", value: $priceSell, format: .number)
+                    TextField("Sold: \(product.sold, specifier: "%.0f")", value: $sold, format: .number)
+                }
+                Button {
                     viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock)
                     dismiss()
+                }label: {
+                    Text("SAVE")
                 }
             }
-            /*Cancel Button*/
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
-                    dismiss()
+            
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    /*Save Button*/
+                    Button("Save") {
+                        viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock)
+                        dismiss()
+                    }
+                }
+                /*Cancel Button*/
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
                 }
             }
         }
