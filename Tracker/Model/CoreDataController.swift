@@ -112,9 +112,9 @@ class CoreDataController: ObservableObject {
     }
     
     func deleteSell (){
-        var sells = fetchAllSells()
-        var orderdSells = sells.sorted(by: { $0.date?.compare($1.date!) == .orderedAscending })
-        var lastSell = orderdSells.last!
+        let sells = fetchAllSells()
+        let orderdSells = sells.sorted(by: { $0.date?.compare($1.date!) == .orderedAscending })
+        let lastSell = orderdSells.last!
 
         viewContext.delete(lastSell)
         saveContext()
