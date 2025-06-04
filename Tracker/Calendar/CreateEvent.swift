@@ -24,7 +24,9 @@ struct CreateEvent: View {
                         Text("Select a time")
                     }
                 }
+                .scrollContentBackground(.hidden)
             }
+            .background(Color.background)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     /*Save Button*/

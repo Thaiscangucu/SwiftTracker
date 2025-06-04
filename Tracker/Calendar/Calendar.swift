@@ -34,9 +34,14 @@ struct Calendar: View {
                 }
                 .padding()
                 
+                List{
+                    
+                }.scrollContentBackground(.hidden)
+                
                 
                 Spacer()
             }
+            .background(Color.background)
             .navigationTitle("Calendar")
         }
        
