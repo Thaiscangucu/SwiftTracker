@@ -2,7 +2,6 @@ import SwiftUI
 
 struct Sheets: View {
     
-    
     @StateObject var viewModel = ContentViewModel()
     @State private var showingSheet: Bool = false
     
@@ -38,7 +37,7 @@ struct Sheets: View {
                 
                 .listStyle(.insetGrouped)
             }
-            .navigationTitle("Product")
+            .navigationTitle("Sheets")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
@@ -50,7 +49,7 @@ struct Sheets: View {
                     .sheet(isPresented: $showingSheet, onDismiss: {
                         viewModel.getProduct()
                     }) {
-                        CreateProductForm()
+//                        CreateProductForm()
                     }
                 }
             }
@@ -65,5 +64,5 @@ struct Sheets: View {
 
 
 #Preview {
-    ProductStockView()
+    Sheets()
 }
