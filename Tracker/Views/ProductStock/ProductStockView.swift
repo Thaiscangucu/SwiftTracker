@@ -1,12 +1,8 @@
 import SwiftUI
 
 struct ProductStockView: View {
-    
-    
     @StateObject var viewModel = ContentViewModel()
     @State private var showingSheet: Bool = false
-    
-    
     @State var searchText: String = "" // Used in Search bar
     
     var searchReults: [Product] {

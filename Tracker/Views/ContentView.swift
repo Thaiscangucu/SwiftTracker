@@ -1,24 +1,26 @@
 import SwiftUI
 
-//Adicionei tabview 
-
 struct ContentView: View {
     var body: some View {
+        
         TabView{
-//            Dashboard()
-//                .tabItem{
-//                    Label("Dashboard", systemImage: "chart.xyaxis.line")
-//                }
+            //            Dashboard()
+            //                .tabItem{
+            //                    Label("Dashboard", systemImage: "chart.xyaxis.line")
+            //                }
             ProductStockView()
                 .tabItem{
                     Label("Stock", systemImage: "shippingbox")
                 }
-//            Sheets()
+            Sheets()
+                .tabItem{
+                    Label("Sheets", systemImage: "doc.text")
+                }
+//            Calendar()
 //                .tabItem{
-//                    Label("Sheets", systemImage: "doc.text")
+//                    Label("Sheets", systemImage: "")
 //                }
         }
-
     }
 }
 

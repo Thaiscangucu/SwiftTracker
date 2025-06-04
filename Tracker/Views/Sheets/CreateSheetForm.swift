@@ -1,11 +1,14 @@
 import SwiftUI
 
+// TODO: Checkbox for the atributes
+
+
 struct CreateSheetForm: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = ContentViewModel()
     
-//    @State private var isOn = false
+    @State private var choice: Int = 0
     
     /*Atributes of product*/
     @State var stock: Double = 0
@@ -16,30 +19,26 @@ struct CreateSheetForm: View {
     
     var body: some View {
         NavigationStack{
+
             VStack{
                 Text("Linhas")
                     .bold()
                     .font(.largeTitle)
-//                Toggle("Close windows when quitting an app", isOn: $isOn)
-//                    .toggleStyle(.checkbox)
-                
-
                 Text("Colunas")
                     .font(.largeTitle)
                     .bold()
             }
+        
             .navigationTitle("Criar")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    /*Save Button*/
+                    
                     Button("Salvar") {
 //                        fetchAllProducts()
-                        
                         dismiss()
                     }
                 }
-                /*Cancel Button*/
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancelar") {
                         dismiss()
