@@ -50,6 +50,22 @@ class CoreDataController: ObservableObject {
         
     }
     
+    /*Create sell log*/
+    func CreateSell(product: Product)-> Sell{
+        let sell = Sell(context: viewContext)
+        
+        sell.productId = product.id
+        sell.id = UUID()
+        sell.price = product.priceSell
+        sell.date = Date.now
+        
+        print(sell.price)
+        
+        return sell
+    }
+    
+    
+    
     /*Edidit product funcion*/
     func editProduct(product: Product, name: String, priceBuy: Double,  priceSell: Double, stock: Double)  {
         
@@ -77,6 +93,21 @@ class CoreDataController: ObservableObject {
         }
     }
     
+    /*Search for sell Logs*/
+    
+    func fetchAllSells() -> [Sell]{
+        let fetchRequest: NSFetchRequest<Sell> = Sell.fetchRequest()
+        
+        do {
+            let resultSell = try viewContext.fetch(fetchRequest)
+            saveContext()
+            return resultSell
+        } catch {
+            print("Error fetching Products: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
     func deleteProduct(_ product: Product){
         viewContext.delete(product)
         saveContext()
@@ -89,6 +120,7 @@ class CoreDataController: ObservableObject {
         }else{
             product.stock -= 1
             product.sold += 1
+            CreateSell(product: product)
             saveContext()
         }
     }

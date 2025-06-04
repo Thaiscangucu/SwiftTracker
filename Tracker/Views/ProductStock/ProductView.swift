@@ -37,6 +37,7 @@ struct ProductView: View {
             Divider()
             Stepper("Sold: \(product.sold, specifier: "%.0f")", onIncrement: {
                 viewModel.sellProduct(product)
+                print("Stepper")
             }, onDecrement: {
                 viewModel.undoSell(product)
             })
