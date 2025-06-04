@@ -20,13 +20,19 @@ struct Calendar: View {
                 
                 HStack{
                     Text("Date is \(date.formatted(date: .long, time: .omitted))")
+                        .font(.title3)
                     
                     Button {
                         showingSheetCalendar.toggle()
                     } label: {
+                        Spacer()
                         Image(systemName: "plus")
                     }
+                    .sheet(isPresented: $showingSheetCalendar) {
+                        CreateEvent()
+                    }
                 }
+                .padding()
                 
                 
                 Spacer()
