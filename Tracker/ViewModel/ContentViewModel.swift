@@ -40,7 +40,7 @@ class ContentViewModel: ObservableObject {
         CoreDataController.shared.sellProduct(product)
     }
     
-    func undoSell(_ product: Product){
-        CoreDataController.shared.undoSell(product)
+    func undoSell(_ product: Product, _ sell: Sell){
+        CoreDataController.shared.undoSell(product, sell)
     }
 }

@@ -58,8 +58,7 @@ class CoreDataController: ObservableObject {
         sell.id = UUID()
         sell.price = product.priceSell
         sell.date = Date.now
-        
-        print(sell.price)
+    
         
         return sell
     }
@@ -113,24 +112,30 @@ class CoreDataController: ObservableObject {
         saveContext()
     }
     
+    func deleteSell (_ sell: Sell){
+        viewContext.delete(sell)
+        saveContext()
+    }
+    
     /*Control the quantity of products*/
     func sellProduct(_ product: Product){
-        if product.sold > product.stock {
+        if product.stock == 0 {
             print("Unable to Sell")
         }else{
             product.stock -= 1
             product.sold += 1
-            CreateSell(product: product)
+            
             saveContext()
         }
     }
     
-    func undoSell(_ product: Product){
+    func undoSell(_ product: Product, _ sell: Sell){
         if product.sold == 0 || product.stock == 0 {
             print("Unable to undo")
         }else{
             product.stock += 1
             product.sold -= 1
+            deleteSell(sell)
             saveContext()
         }
     }
