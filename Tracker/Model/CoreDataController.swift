@@ -58,7 +58,8 @@ class CoreDataController: ObservableObject {
         sell.id = UUID()
         sell.price = product.priceSell
         sell.date = Date.now
-    
+        
+        print(sell.price)
         
         return sell
     }
@@ -112,8 +113,12 @@ class CoreDataController: ObservableObject {
         saveContext()
     }
     
-    func deleteSell (_ sell: Sell){
-        viewContext.delete(sell)
+    func deleteSell (){
+        var sells = fetchAllSells()
+        var orderdSells = sells.sorted(by: { $0.date?.compare($1.date!) == .orderedAscending })
+        var lastSell = orderdSells.last!
+
+        viewContext.delete(lastSell)
         saveContext()
     }
     
@@ -124,18 +129,18 @@ class CoreDataController: ObservableObject {
         }else{
             product.stock -= 1
             product.sold += 1
-            
+            CreateSell(product: product)
             saveContext()
         }
     }
     
-    func undoSell(_ product: Product, _ sell: Sell){
+    func undoSell(_ product: Product){
         if product.sold == 0 || product.stock == 0 {
             print("Unable to undo")
         }else{
             product.stock += 1
             product.sold -= 1
-            deleteSell(sell)
+            deleteSell()
             saveContext()
         }
     }

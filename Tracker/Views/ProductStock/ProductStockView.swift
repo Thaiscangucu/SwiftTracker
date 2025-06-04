@@ -19,23 +19,24 @@ struct ProductStockView: View {
         }
     }
     
+    
     var body: some View {
         
         NavigationStack {
             VStack {
                 List(searchReults) { product in
-                    Section {
-                        ProductView(product: product)
-                    }
-                    .swipeActions {
-                        Button(role: .destructive) {
-                            viewModel.deleteProduct(product)
-                        } label: {
-                            Image(systemName: "trash")
+                        Section {
+                            ProductView(product: product)
                         }
-                    }
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                viewModel.deleteProduct(product)
+                            } label: {
+                                Image(systemName: "trash")
+                            }
+                        }
+                    
                 }
-                
                 .listStyle(.insetGrouped)
             }
             .navigationTitle("Product")
@@ -64,6 +65,4 @@ struct ProductStockView: View {
 }
 
 
-#Preview {
-    ProductStockView()
-}
+
