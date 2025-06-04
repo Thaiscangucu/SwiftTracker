@@ -59,8 +59,6 @@ class CoreDataController: ObservableObject {
         sell.price = product.priceSell
         sell.date = Date.now
         
-        print(sell.price)
-        
         return sell
     }
     
