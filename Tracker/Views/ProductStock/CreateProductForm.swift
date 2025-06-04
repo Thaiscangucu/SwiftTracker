@@ -16,16 +16,41 @@ struct CreateProductForm: View {
     
     var body: some View {
         NavigationStack{
-            VStack {
+
                 Form {
                     /*Get user input*/
                     TextField("Name", text: $name)
-                    TextField("Stock", value: $stock, format: .number)
-                    TextField("Price Buy", value: $priceBuy, format: .number)
-                    TextField("Price Sell", value: $priceSell, format: .number)
-                    TextField("Sold", value: $sold, format: .number)
+                        .listRowSeparator(.visible)
+                    HStack{
+                        Text("Stock:       ")
+                        TextField("", value: $stock, format: .number)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                    }
+                    .listRowSeparator(.hidden)
+                    
+                    HStack{
+                        Text("Price Buy: ")
+                        TextField("", value: $priceBuy, format: .number)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                    }
+                    .listRowSeparator(.hidden)
+                    
+                    HStack{
+                        Text("Price Sell:  ")
+                        TextField("", value: $priceSell, format: .number)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
+                    .listRowSeparator(.hidden)
+                    
+                    HStack{
+                        Text("Sold:          ")
+                        TextField("", value: $sold, format: .number)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
                 }
-            }
+                
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     /*Save Button*/

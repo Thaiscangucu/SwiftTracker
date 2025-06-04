@@ -23,7 +23,6 @@ struct ProductStockView: View {
         
         NavigationStack {
             VStack {
-                
                 List(searchReults) { product in
                     Section {
                         ProductView(product: product)

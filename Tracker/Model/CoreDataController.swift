@@ -50,6 +50,19 @@ class CoreDataController: ObservableObject {
         
     }
     
+    /*Edidit product funcion*/
+    func editProduct(product: Product, name: String, priceBuy: Double,  priceSell: Double, stock: Double)  {
+        
+        product.name = name
+        product.priceBuy = priceBuy
+        product.priceSell = priceSell
+        product.stock = stock
+        
+        saveContext()
+        
+    }
+    
+    
     /*Search for products*/
     func fetchAllProducts() -> [Product] {
         let fetchRequest: NSFetchRequest<Product> = Product.fetchRequest()
