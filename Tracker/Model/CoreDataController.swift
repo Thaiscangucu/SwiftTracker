@@ -55,6 +55,7 @@ class CoreDataController: ObservableObject {
         let sell = Sell(context: viewContext)
         
         sell.productId = product.id
+        sell.productName = product.name
         sell.id = UUID()
         sell.price = product.priceSell
         sell.date = Date.now
@@ -178,3 +179,7 @@ class CoreDataController: ObservableObject {
     
 
 }
+
+//extension Product: Identifiable {
+//    
+//}

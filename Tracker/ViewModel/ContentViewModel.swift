@@ -25,8 +25,8 @@ class ContentViewModel: ObservableObject {
     
     func CreateSell (product: Product){
         let result = CoreDataController.shared.CreateSell(product: product)
-        
         self.sells.append(result)
+
     }
     
     func editProduct(product: Product, name: String, priceBuy: Double, priceSell: Double, stock: Double) {
@@ -40,6 +40,7 @@ class ContentViewModel: ObservableObject {
     
     func sellProduct(_ product: Product){
         CoreDataController.shared.sellProduct(product)
+        CreateSell(product: product)
     }
     
     func undoSell(_ product: Product){
