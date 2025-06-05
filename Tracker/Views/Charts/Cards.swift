@@ -11,13 +11,17 @@ struct Cards: View {
     }
     
     var body: some View {
+        //TODO: - Verificador de casas para o label
         VStack(alignment: .leading){
             Text(title)
                 .font(.system(size: 15))
+                .padding(.bottom, 2)
             Text("\(label,specifier: "%.0f")")
                 .font(.system(size: 30))
+                .fontWeight(.bold)
         }
-        
+        .padding(.vertical)
+    
     }
 }
 
