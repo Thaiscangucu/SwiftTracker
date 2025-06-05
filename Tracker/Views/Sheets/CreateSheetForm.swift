@@ -1,14 +1,13 @@
 import SwiftUI
 
-// TODO: Checkbox for the atributes
+// TODO: Arrumar atributos lista 
 
 
 struct CreateSheetForm: View {
     
     @Environment(\.dismiss) var dismiss
+    @ObservedObject public var product: Product
     @ObservedObject var viewModel = ContentViewModel()
-    
-    @State private var choice: Int = 0
     
     /*Atributes of product*/
     @State var stock: Double = 0
@@ -16,7 +15,7 @@ struct CreateSheetForm: View {
     @State var priceSell: Double = 0
     @State var priceBuy: Double = 0
     @State var name: String = ""
-    
+//    var atributes: [String] = ["name", "stock", ]
     var body: some View {
         NavigationStack{
 
@@ -24,6 +23,11 @@ struct CreateSheetForm: View {
                 Text("Linhas")
                     .bold()
                     .font(.largeTitle)
+                
+                Form{
+                    Text("Name")
+                        .listRowSeparator(.visible)
+                }
                 Text("Colunas")
                     .font(.largeTitle)
                     .bold()
@@ -50,7 +54,7 @@ struct CreateSheetForm: View {
 }
 
 #Preview {
-    CreateSheetForm()
+    CreateSheetForm(product: Product())
 }
 
 
