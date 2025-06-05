@@ -1,10 +1,3 @@
-//
-//  CreateEvent.swift
-//  Tracker
-//
-//  Created by anshu Li on 04/06/25.
-//
-
 import SwiftUI
 
 struct CreateEvent: View {
