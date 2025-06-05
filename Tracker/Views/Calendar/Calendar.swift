@@ -4,6 +4,7 @@ struct Calendar: View {
     @State private var date = Date()
     @State private var showingSheetCalendar: Bool = false
     
+    @ObservedObject public var sell: Sell
     @ObservedObject public var event: Event
     @ObservedObject var viewModel = ContentViewModel()
     
@@ -30,9 +31,19 @@ struct Calendar: View {
                 }
                 .padding()
                 
-                List{
+//                List(viewModel.events.filter(\.event.dateEvent == date)){
+//                    ev in
+//                            Section {
+//                                EventView(event:ev)
+//                            }
+                    
+                    
                     
                 }.scrollContentBackground(.hidden)
+                    .listStyle(.insetGrouped)
+//                
+//                Text("Total Sell: \()")
+//                Text("Total Price: \()")
                 
                 
                 Spacer()
