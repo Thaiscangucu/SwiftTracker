@@ -1,7 +1,7 @@
 import SwiftUI
 
 //MARK: - Create Product View
-//TODO: - Fix number input
+
 struct CreateProductForm: View {
     
     @Environment(\.dismiss) var dismiss

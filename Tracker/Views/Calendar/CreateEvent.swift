@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct CreateEvent: View {
+
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var viewModel = ContentViewModel()
     
     @State private var dateEvent = Date()
     @State var nameEvent: String = ""
@@ -24,6 +26,7 @@ struct CreateEvent: View {
                 ToolbarItem(placement: .confirmationAction) {
                     /*Save Button*/
                     Button("Save") {
+                        viewModel.createEvent(dateEvent: dateEvent, nameEvent: nameEvent, context: context)
                         dismiss()
                     }
                 }

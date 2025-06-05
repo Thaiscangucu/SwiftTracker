@@ -4,6 +4,9 @@ struct Calendar: View {
     @State private var date = Date()
     @State private var showingSheetCalendar: Bool = false
     
+    @ObservedObject public var event: Event
+    @ObservedObject var viewModel = ContentViewModel()
+    
     var body: some View {
         NavigationStack{
             VStack{
@@ -42,6 +45,3 @@ struct Calendar: View {
     }
 }
 
-#Preview {
-    Calendar()
-}
