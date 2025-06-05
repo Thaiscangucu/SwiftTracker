@@ -52,11 +52,17 @@ struct SalesWidgetEntryView : View {
 
     var body: some View {
         ZStack {
-            ContainerRelativeShape()
-                .fill(.blue.gradient)
-            Text("aa")
+            VStack{
+                Text("Vendas")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .minimumScaleFactor(0.6)
+                    .foregroundStyle(.azul)
+                Text("10")
+                    .font(.system(size: 80, weight: .heavy))
+                    .foregroundStyle(.azul)
+            }
         }
-    
     }
 }
 
