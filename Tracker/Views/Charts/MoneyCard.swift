@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Cards: View {
+struct MoneyCard: View {
     
     var title: String
     var label: Double
@@ -26,5 +26,5 @@ struct Cards: View {
 }
 
 #Preview {
-    Cards(title: "Vendas", label: 40)
+    MoneyCard(title: "Vendas", label: 40)
 }

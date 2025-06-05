@@ -9,15 +9,15 @@ struct CardsSet: View {
             //TODO: - Fix Collors and parameters
             HStack{
                 Spacer()
-                Cards(title: "Vendas", label: 4)
+                MoneyCard(title: "Vendas", label: 4)
                 Spacer()
                 Divider().frame(width: dividerW, height: dividerH)
                 Spacer()
-                Cards(title: "Produtos", label: 40)
+                MoneyCard(title: "Produtos", label: 40)
                 Spacer()
                 Divider().frame(width: dividerW, height: dividerH)
                 Spacer()
-                Cards(title: "Lucro", label: 4)
+                MoneyCard(title: "Lucro", label: 4)
                 Spacer()
             }
             .background(.red)
@@ -27,6 +27,8 @@ struct CardsSet: View {
     }
 }
 
+
+//TODO: - Fucnion that formats label character
 #Preview {
     CardsSet()
 }
