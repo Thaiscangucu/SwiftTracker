@@ -6,10 +6,11 @@ struct BarCharts: View {
 
     var body: some View {
         VStack {
-            
-            ForEach(viewModel.products, id: \.self) { product in
-                Chart{
+            Chart{
+                ForEach(viewModel.products, id: \.self) { product in
+                    
                     BarMark(x: PlottableValue.value("Product", product.name!), y: PlottableValue.value("Sold", product.sold))
+                    
                 }
             }
         }
