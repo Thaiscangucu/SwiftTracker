@@ -5,14 +5,14 @@ struct CreateEvent: View {
     
     @State private var dateEvent = Date()
     @State var nameEvent: String = ""
-    @State var events: String = ""
+    @State var context: String = ""
     
     var body: some View {
         NavigationStack{
             VStack{
                 Form {
                     TextField("Name", text: $nameEvent)
-                    TextField("Event", text: $events)
+                    TextField("Event", text: $context)
                     DatePicker(selection: $dateEvent, in: Date.now...) {
                         Text("Select a time")
                     }

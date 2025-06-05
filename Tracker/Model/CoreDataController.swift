@@ -21,7 +21,7 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    //MARK: - Func that interacts with Product data
+    //MARK: - Func that interacts with Product and sell data
     
     /*Save after changing the content*/
     func saveContext() {
@@ -142,5 +142,39 @@ class CoreDataController: ObservableObject {
             saveContext()
         }
     }
+    
+    //MARK: - Fuctions that controls the Calendar events
+    
+    func createEvent(dateEvent: Date, nameEvent: String, context: String) -> Event {
+        let event = Event(context: viewContext)
+        
+        event.dateEvent = dateEvent
+        event.nameEvent = nameEvent
+        event.context = context
+        
+        saveContext()
+        return event
+    }
+    
+    func fetchAllEvents() -> [Event]{
+        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        
+        do {
+            let resultEvent = try viewContext.fetch(fetchRequest)
+            saveContext()
+            return resultEvent
+        } catch {
+            print("Error fetching Products: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    func deleteEvent(_ event: Event){
+        viewContext.delete(event)
+        saveContext()
+    }
+    
+    //TODO: - edit event function
+    
 
 }

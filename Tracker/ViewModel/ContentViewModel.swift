@@ -6,7 +6,9 @@ import CoreData
 class ContentViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var sells: [Sell] = []
+    @Published var events: [Event] = []
     
+    //MARK: - Product and sell Log viewModel
     func getProduct() {
         products = CoreDataController.shared.fetchAllProducts()
     }
@@ -42,5 +44,21 @@ class ContentViewModel: ObservableObject {
     
     func undoSell(_ product: Product){
         CoreDataController.shared.undoSell(product)
+    }
+    
+    //Mark: - Events viewModel
+    
+    func getEvent() {
+        events = CoreDataController.shared.fetchAllEvents()
+    }
+    
+    func createEvent(dateEvent: Date, nameEvent: String, context: String){
+        let result = CoreDataController.shared.createEvent(dateEvent: dateEvent, nameEvent: nameEvent, context: context)
+        
+        self.events.append(result)
+    }
+    
+    func deleteEvent(_ event: Event) {
+        CoreDataController.shared.deleteEvent(event)
     }
 }
