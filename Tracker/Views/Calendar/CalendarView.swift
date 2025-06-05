@@ -20,6 +20,7 @@ struct CalendarView: View {
                     .datePickerStyle(.graphical)
                 
                 
+                
                 HStack{
                     Text("Date is \(date.formatted(date: .long, time: .omitted))")
                         .font(.title3)
@@ -33,12 +34,13 @@ struct CalendarView: View {
                     .sheet(isPresented: $showingSheetCalendar) {
                         CreateEvent()
                     }
+                    .padding()
                 }
-                .padding()
-                
                 //List goes here
                 
-                List(filterDate){
+                List(viewModel.events.filter {
+                    $0.dateEvent == date
+                }){
                     ev in
                     Section {
                         EventView(event: ev)
@@ -67,3 +69,4 @@ struct CalendarView: View {
     }
     
 }
+
