@@ -155,6 +155,7 @@ class CoreDataController: ObservableObject {
         
         saveContext()
         return event
+        
     }
     
     func fetchAllEvents() -> [Event]{

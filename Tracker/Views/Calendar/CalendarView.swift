@@ -1,11 +1,10 @@
 import SwiftUI
 
-struct Calendar: View {
+struct CalendarView: View {
     @State private var date = Date()
     @State private var showingSheetCalendar: Bool = false
     
-    @ObservedObject public var sell: Sell
-    @ObservedObject public var event: Event
+    
     @ObservedObject var viewModel = ContentViewModel()
     
     var body: some View {
@@ -31,19 +30,19 @@ struct Calendar: View {
                 }
                 .padding()
                 
-//                List(viewModel.events.filter(\.event.dateEvent == date)){
-//                    ev in
-//                            Section {
-//                                EventView(event:ev)
-//                            }
-                    
-                    
-                    
-                }.scrollContentBackground(.hidden)
-                    .listStyle(.insetGrouped)
-//                
-//                Text("Total Sell: \()")
-//                Text("Total Price: \()")
+                                List(viewModel.events){
+                                    ev in
+                                            Section {
+                                                EventView(event:ev)
+                                            }
+                
+                
+                
+                            }.scrollContentBackground(.hidden)
+                                .listStyle(.insetGrouped)
+                
+                //                Text("Total Sell: \()")
+                //                Text("Total Price: \()")
                 
                 
                 Spacer()
@@ -51,8 +50,8 @@ struct Calendar: View {
             .background(Color.background)
             .navigationTitle("Calendar")
         }
-       
+        
         
     }
+    
 }
-

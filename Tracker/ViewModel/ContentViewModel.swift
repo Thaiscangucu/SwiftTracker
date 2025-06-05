@@ -57,6 +57,7 @@ class ContentViewModel: ObservableObject {
         let result = CoreDataController.shared.createEvent(dateEvent: dateEvent, nameEvent: nameEvent, context: context)
         
         self.events.append(result)
+        
     }
     
     func deleteEvent(_ event: Event) {

@@ -13,6 +13,10 @@ struct ContentView: View {
                 .tabItem{
                     Label("Stock", systemImage: "shippingbox")
                 }
+            CalendarView()
+                .tabItem{
+                    Label("Calendar", systemImage: "calendar")
+                }
             //            Sheets()
             //                .tabItem{
             //                    Label("Sheets", systemImage: "doc.text")
