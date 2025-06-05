@@ -4,8 +4,14 @@ struct CalendarView: View {
     @State private var date = Date()
     @State private var showingSheetCalendar: Bool = false
     
-    
     @ObservedObject var viewModel = ContentViewModel()
+    
+    
+    var filterDate: [Event] {
+        viewModel.events.filter {
+            $0.dateEvent == date
+        }
+    }
     
     var body: some View {
         NavigationStack{
@@ -30,19 +36,24 @@ struct CalendarView: View {
                 }
                 .padding()
                 
-                                List(viewModel.events){
-                                    ev in
-                                            Section {
-                                                EventView(event:ev)
-                                            }
+                //List goes here
                 
-                
-                
-                            }.scrollContentBackground(.hidden)
-                                .listStyle(.insetGrouped)
-                
-                //                Text("Total Sell: \()")
-                //                Text("Total Price: \()")
+                List(filterDate){
+                    ev in
+                    Section {
+                        EventView(event: ev)
+                    }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            viewModel.deleteEvent(ev)
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                    }
+                }
+                .onAppear(){
+                    viewModel.getEvent()
+                }
                 
                 
                 Spacer()
@@ -50,6 +61,7 @@ struct CalendarView: View {
             .background(Color.background)
             .navigationTitle("Calendar")
         }
+        
         
         
     }

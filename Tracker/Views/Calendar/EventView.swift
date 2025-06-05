@@ -24,5 +24,8 @@ struct EventView: View {
                 .font(.callout)
                 .padding(.bottom)
         }
+        .onAppear(){
+            viewModel.getEvent()
+        }
     }
 }
