@@ -23,10 +23,10 @@ struct ContentView: View {
                 }
                 .toolbarBackground(.navy, for: .tabBar)
                             .toolbarBackground(.visible, for: .tabBar)
-            //            Sheets()
-            //                .tabItem{
-            //                    Label("Sheets", systemImage: "doc.text")
-            //                }
+            Sheets()
+                .tabItem{
+                    Label("Sheets", systemImage: "doc.text")
+                }
         }
         
     }
