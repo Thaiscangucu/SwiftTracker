@@ -1,9 +1,3 @@
-//
-//  SalesWidget.swift
-//  SalesWidget
-//
-//  Created by Thais Cangucu on 05/06/25.
-//
 
 import WidgetKit
 import SwiftUI
@@ -50,6 +44,7 @@ struct SimpleEntry: TimelineEntry {
 struct SalesWidgetEntryView : View {
     var entry: Provider.Entry
     
+    //@ObservedObject var viewModel = ContentViewModel()
 
     var body: some View {
             VStack{

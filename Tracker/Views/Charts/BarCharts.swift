@@ -6,7 +6,6 @@ struct BarCharts: View {
     
     var body: some View {
         VStack {
-    
             Chart{
                 
                 BarMark(x: PlottableValue.value("Product", 10), y: PlottableValue.value("Sold", 20))
