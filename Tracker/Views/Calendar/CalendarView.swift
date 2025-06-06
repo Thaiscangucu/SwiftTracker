@@ -1,17 +1,14 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @State private var date = Date()
+    @State public var date = Date()
     @State private var showingSheetCalendar: Bool = false
     
     @ObservedObject var viewModel = ContentViewModel()
     
     
-    var filterDate: [Event] {
-        viewModel.events.filter {
-            dateFormater(date: $0.dateEvent!) == dateFormater(date: date)
-        }
-    }
+    
+
     
     var body: some View {
         NavigationStack{
@@ -35,24 +32,17 @@ struct CalendarView: View {
                     
                 }
                 .padding()
-                //List goes here
                 
-                List(filterDate){
-                    ev in
-                    Section {
-                        EventView(event: ev)
-                    }
-                    .swipeActions {
-                        Button(role: .destructive) {
-                            viewModel.deleteEvent(ev)
-                        } label: {
-                            Image(systemName: "trash")
-                        }
-                    }
-                }
-                .onAppear(){
-                    viewModel.getEvent()
-                }
+                NavigationLink(destination: CalendarProductData(productdate: date), label:{
+                    Text("Product Today")
+                })
+                
+                NavigationLink(destination: CalendarEventDate(eventdate: date), label:{
+                    Text("Event Today")
+                })
+                
+                
+                
                 
                 
                 Spacer()
