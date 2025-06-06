@@ -18,9 +18,7 @@ struct CalendarView: View {
             VStack{
                 DatePicker("Select Date", selection: $date, displayedComponents: [.date])
                     .datePickerStyle(.graphical)
-                
-                
-                
+  
                 HStack{
                     Text("Date is \(date.formatted(date: .long, time: .omitted))")
                         .font(.title3)

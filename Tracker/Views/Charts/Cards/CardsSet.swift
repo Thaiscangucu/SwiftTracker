@@ -5,6 +5,8 @@ struct CardsSet: View {
     let dividerW: CGFloat = 1.5
     let dividerH: CGFloat = 35
     
+    
+    
     var body: some View {
             //TODO: - Fix Collors and parameters
             HStack{

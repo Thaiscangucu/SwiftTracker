@@ -5,15 +5,17 @@ struct MoneyCard: View {
     var title: String
     var label: Double
     
+    
     init(title: String, label: Double) {
         self.title = title
         self.label = label
     }
     
-    
+    //var cardText = textForCard(label: self.label)
     
     var body: some View {
         //TODO: - Verificador de casas para o label
+        
         VStack(alignment: .leading){
             Text(title)
                 .font(.system(size: 15))
@@ -28,6 +30,7 @@ struct MoneyCard: View {
     
     }
 }
+
 func textForCard (label: Double) -> String{
     var textComp = " " 
     
