@@ -34,8 +34,9 @@ struct CalendarView: View {
                     .sheet(isPresented: $showingSheetCalendar) {
                         CreateEvent()
                     }
-                    .padding()
+                    
                 }
+                .padding()
                 //List goes here
                 
                 List(viewModel.events.filter {

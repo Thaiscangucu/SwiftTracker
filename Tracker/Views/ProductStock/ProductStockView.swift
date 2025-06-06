@@ -59,6 +59,7 @@ struct ProductStockView: View {
                 viewModel.getProduct()
             }
             .searchable(text: $searchText)
+            .toolbarBackground(.navy, for: .navigationBar)
         }
 
     }
