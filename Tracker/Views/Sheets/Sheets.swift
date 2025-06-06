@@ -38,7 +38,7 @@ struct Sheets: View {
                     .sheet(isPresented: $showingSheet, onDismiss: {
                         viewModel.getProduct()
                     }) {
-                        CreateSheetForm(product: Product())
+                        CreateSheetView(product: Product())
                     }
                 }
             }

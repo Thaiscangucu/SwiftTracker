@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import Foundation
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -51,24 +52,20 @@ struct SalesWidgetEntryView : View {
     
 
     var body: some View {
-        ZStack {
             VStack{
                 Text("Vendas")
-                    .font(.title2)
+                    .font(.title)
                     .fontWeight(.bold)
                     .minimumScaleFactor(0.6)
-                    .foregroundStyle(.azul)
-                Text("10")
-                    .font(.system(size: 80, weight: .heavy))
-                    .foregroundStyle(.azul)
+                    .foregroundStyle(.texto)
+                
+                Text("34")
+                    .font(.system(size: 65, weight: .heavy))
+                    .foregroundStyle(.texto)
             }
-        }
+            .padding()
     }
 }
-
-
-
-
 
 
 

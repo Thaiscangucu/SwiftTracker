@@ -1,39 +1,23 @@
 import SwiftUI
 
-// TODO: Arrumar atributos lista 
-
-
-struct CreateSheetForm: View {
-    
+struct CreateSheetView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject public var product: Product
-    @ObservedObject var viewModel = ContentViewModel()
-    
-    /*Atributes of product*/
-    @State var stock: Double = 0
-    @State var sold: Double = 0
-    @State var priceSell: Double = 0
-    @State var priceBuy: Double = 0
-    @State var name: String = ""
-//    var atributes: [String] = ["name", "stock", ]
     var body: some View {
+        
         NavigationStack{
-
-            VStack{
-                
+            
+            
                 AtributesForm(title: "Linhas")
                 AtributesForm(title: "Colunas")
-
-
-            }
-        
+            
             .navigationTitle("Nova Planilha")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     
                     Button("Salvar") {
-//                        fetchAllProducts()
+//                        fetchAllSheets()
                         dismiss()
                     }
                 }
@@ -44,11 +28,12 @@ struct CreateSheetForm: View {
                 }
             }
         }
+        .padding(.bottom)
     }
 }
 
 #Preview {
-    CreateSheetForm(product: Product())
+    CreateSheetView(product: Product())
 }
 
 
