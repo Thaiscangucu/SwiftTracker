@@ -9,6 +9,8 @@ class ContentViewModel: ObservableObject {
     @Published var events: [Event] = []
     
     @Published var totalSell: Double = 0
+    @Published var totalBuy: Double = 0
+
     
     //MARK: - Product and sell Log viewModel
     func getProduct() {
@@ -22,7 +24,7 @@ class ContentViewModel: ObservableObject {
     func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double,sold: Double, stock: Double, dateProduct: Date) {
         let result = CoreDataController.shared.createProduct(id: id, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock, dateProduct: dateProduct)
         
-        print(result)
+        totalBuy += priceBuy
         self.products.append(result)
     }
     
@@ -70,3 +72,4 @@ class ContentViewModel: ObservableObject {
         CoreDataController.shared.deleteEvent(event)
     }
 }
+

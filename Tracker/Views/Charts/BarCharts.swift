@@ -6,14 +6,13 @@ struct BarCharts: View {
     
     var body: some View {
         VStack {
+            PieChart()
             Chart{
-                
-                BarMark(x: PlottableValue.value("Product", 10), y: PlottableValue.value("Sold", 20))
-                    .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
-                
-                
-                
-            }
+                ForEach(viewModel.products){ product in
+                    BarMark(x: PlottableValue.value("Product", product.name ?? ""), y: PlottableValue.value("Stock", product.stock))
+                        .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
+                    
+                }}
             .frame(height:200)
             .chartLegend(position: .top, alignment: .bottomTrailing)
             .chartYAxis(.hidden)
