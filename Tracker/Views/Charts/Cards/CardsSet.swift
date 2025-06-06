@@ -9,7 +9,7 @@ struct CardsSet: View {
             //TODO: - Fix Collors and parameters
             HStack{
                 Spacer()
-                MoneyCard(title: "Vendas", label: 4)
+                DoubleCard(title: "Vendas", label: 4)
                 Spacer()
                 Divider().frame(width: dividerW, height: dividerH)
                 Spacer()
@@ -17,10 +17,10 @@ struct CardsSet: View {
                 Spacer()
                 Divider().frame(width: dividerW, height: dividerH)
                 Spacer()
-                MoneyCard(title: "Lucro", label: 4)
+                DoubleCard(title: "Lucro", label: 4)
                 Spacer()
             }
-            .background(.red)
+            .background(.princessBlue)
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .padding(.horizontal)
         

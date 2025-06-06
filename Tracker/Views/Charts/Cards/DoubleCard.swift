@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MoneyCard: View {
+struct DoubleCard: View {
     
     var title: String
     var label: Double
@@ -18,30 +18,19 @@ struct MoneyCard: View {
             Text(title)
                 .font(.system(size: 15))
                 .padding(.bottom, 2)
-            
+                .foregroundStyle(.white)
             Text("\(label,specifier: "%.0f")")
                 .font(.system(size: 30))
                 .fontWeight(.bold)
+                .foregroundStyle(.white)
         }
         .padding(.vertical)
     
     }
 }
-func textForCard (label: Double) -> String{
-    var textComp = " " 
-    
-    if label > 1.000000000{
-        textComp = "Bi"
-    }else if label > 1000000{
-        textComp = "Mi"
-    }else{
-        textComp = "Mil"
-    }
-    
-    return textComp
-}
+
 
 #Preview {
-    MoneyCard(title: "Vendas", label: 40)
+    DoubleCard(title: "Vendas", label: 40)
 }
 

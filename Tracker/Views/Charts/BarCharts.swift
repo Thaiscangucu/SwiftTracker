@@ -10,7 +10,8 @@ struct BarCharts: View {
                 ForEach(viewModel.products, id: \.self) { product in
                     
                     BarMark(x: PlottableValue.value("Product", product.name!), y: PlottableValue.value("Sold", product.sold))
-                        .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
+                            .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
+                            
                 }
             }
             .frame(height:200)
@@ -22,8 +23,9 @@ struct BarCharts: View {
                                 "Products": Color(.princessBlue)
                                  ])
             .padding(.vertical)
+            .shadow(radius: 5)
         }
-        .padding(.horizontal)
+        .padding()
         .onAppear{
             viewModel.getProduct()
         }
