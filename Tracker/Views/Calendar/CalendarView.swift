@@ -9,7 +9,7 @@ struct CalendarView: View {
     
     var filterDate: [Event] {
         viewModel.events.filter {
-            $0.dateEvent == date
+            dateFormater(date: $0.dateEvent!) == dateFormater(date: date)
         }
     }
     
@@ -37,9 +37,7 @@ struct CalendarView: View {
                 .padding()
                 //List goes here
                 
-                List(viewModel.events.filter {
-                    $0.dateEvent == date
-                }){
+                List(filterDate){
                     ev in
                     Section {
                         EventView(event: ev)
