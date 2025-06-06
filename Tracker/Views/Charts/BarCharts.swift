@@ -10,10 +10,20 @@ struct BarCharts: View {
                 ForEach(viewModel.products, id: \.self) { product in
                     
                     BarMark(x: PlottableValue.value("Product", product.name!), y: PlottableValue.value("Sold", product.sold))
-                    
+                        .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
                 }
             }
+            .frame(height:200)
+            .chartLegend(position: .top, alignment: .bottomTrailing)
+            .chartYAxis(.hidden)
+            .background(.textField)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .chartForegroundStyleScale([
+                                "Products": Color(.princessBlue)
+                                 ])
+            .padding(.vertical)
         }
+        .padding(.horizontal)
         .onAppear{
             viewModel.getProduct()
         }

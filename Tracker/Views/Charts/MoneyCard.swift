@@ -10,12 +10,15 @@ struct MoneyCard: View {
         self.label = label
     }
     
+    
+    
     var body: some View {
         //TODO: - Verificador de casas para o label
         VStack(alignment: .leading){
             Text(title)
                 .font(.system(size: 15))
                 .padding(.bottom, 2)
+            
             Text("\(label,specifier: "%.0f")")
                 .font(.system(size: 30))
                 .fontWeight(.bold)
@@ -24,7 +27,21 @@ struct MoneyCard: View {
     
     }
 }
+func textForCard (label: Double) -> String{
+    var textComp = " " 
+    
+    if label > 1.000000000{
+        textComp = "Bi"
+    }else if label > 1000000{
+        textComp = "Mi"
+    }else{
+        textComp = "Mil"
+    }
+    
+    return textComp
+}
 
 #Preview {
     MoneyCard(title: "Vendas", label: 40)
 }
+
