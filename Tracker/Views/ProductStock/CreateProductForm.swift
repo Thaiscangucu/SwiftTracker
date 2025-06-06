@@ -13,6 +13,7 @@ struct CreateProductForm: View {
     @State var priceSell: Double = 0
     @State var priceBuy: Double = 0
     @State var name: String = ""
+    @State var dateProduct: Date = Date.now
     
     var body: some View {
         NavigationStack{
@@ -56,7 +57,7 @@ struct CreateProductForm: View {
                     /*Save Button*/
                     Button("Save") {
                         viewModel.createProduct(id: UUID(), name: name, priceBuy: priceBuy, priceSell: priceSell,
-                            sold: sold, stock: stock)
+                            sold: sold, stock: stock,dateProduct: dateProduct)
                         
                         dismiss()
                     }

@@ -35,7 +35,7 @@ class CoreDataController: ObservableObject {
     }
     
     /*Cerate product and saves it*/
-    func createProduct(id: UUID, name: String, priceBuy: Double,  priceSell: Double, sold: Double, stock: Double) -> Product {
+    func createProduct(id: UUID, name: String, priceBuy: Double,  priceSell: Double, sold: Double, stock: Double, dateProduct: Date) -> Product {
         let product = Product(context: viewContext)
         
         product.id = UUID()
@@ -44,6 +44,7 @@ class CoreDataController: ObservableObject {
         product.priceSell = priceSell
         product.sold = sold
         product.stock = stock
+        product.dateProduct = Date.now
         
         saveContext()
         return product
