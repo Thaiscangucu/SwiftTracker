@@ -1,16 +1,16 @@
-import SwiftUI
 import Charts
+import SwiftUI
 
-struct BarCharts: View {
+struct LineChart: View {
     @ObservedObject var viewModel = ContentViewModel()
 
     var body: some View {
+        //TODO: - Não Aparece os dados
         VStack {
-            LineChart()
             Chart{
-                ForEach(viewModel.products, id: \.self) { product in
+                ForEach(viewModel.sells, id: \.self) { sell in
                     
-                    BarMark(x: PlottableValue.value("Product", product.name!), y: PlottableValue.value("Sold", product.sold))
+                    LineMark(x: PlottableValue.value("Day", sell.date!), y: PlottableValue.value("Price", sell.price))
                             .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
                             
                 }
@@ -28,7 +28,7 @@ struct BarCharts: View {
         }
         .padding()
         .onAppear{
-            viewModel.getProduct()
+            viewModel.getSell()
         }
     }
 }
