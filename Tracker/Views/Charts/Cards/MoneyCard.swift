@@ -1,0 +1,51 @@
+import SwiftUI
+
+struct MoneyCard: View {
+    
+    var title: String
+    var label: Double
+    
+    
+    init(title: String, label: Double) {
+        self.title = title
+        self.label = label
+    }
+    
+    //var cardText = textForCard(label: self.label)
+    
+    var body: some View {
+        //TODO: - Verificador de casas para o label
+        
+        VStack(alignment: .leading){
+            Text(title)
+                .font(.system(size: 15))
+                .padding(.bottom, 2)
+                .foregroundStyle(.white)
+            Text("R$\(label,specifier: "%.0f")")
+                .font(.system(size: 30))
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+        }
+        .padding(.vertical)
+    
+    }
+}
+
+func textForCard (label: Double) -> String{
+    var textComp = " " 
+    
+    if label > 1.000000000{
+        textComp = "Bi"
+    }else if label > 1000000{
+        textComp = "Mi"
+    }else{
+        textComp = "Mil"
+    }
+    
+    return textComp
+}
+
+#Preview {
+    MoneyCard(title: "Vendas", label: 40)
+}
+

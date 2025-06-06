@@ -27,7 +27,6 @@ struct EditProductVIew: View {
             VStack{
                 Form {
                     /*Let the user acess only the atribute he wants*/
-                    //TODO: - FORMATAR a Tela
                     HStack{
                         Text("Name: ")
                         TextField("", text: $name)

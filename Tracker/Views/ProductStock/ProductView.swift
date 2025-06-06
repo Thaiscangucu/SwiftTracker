@@ -5,7 +5,7 @@ struct ProductView: View {
     @ObservedObject var viewModel = ContentViewModel()
     
     @State private var showingEditSheet: Bool = false
-    
+    @State public var totalSell: Double = 0
     
     var body: some View {
         Grid (alignment: .leading) {
@@ -37,8 +37,10 @@ struct ProductView: View {
             Divider()
             Stepper("Sold: \(product.sold, specifier: "%.0f")", onIncrement: {
                 viewModel.sellProduct(product)
+                totalSell += product.priceSell
             }, onDecrement: {
                 viewModel.undoSell(product)
+                totalSell -= product.priceSell
             })
             .padding(.top)
             .padding(.bottom, 0.5)
