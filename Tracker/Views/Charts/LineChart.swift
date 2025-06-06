@@ -8,11 +8,11 @@ struct LineChart: View {
         //TODO: - Não Aparece os dados
         VStack {
             Chart{
-                ForEach(viewModel.sells, id: \.self) { sell in
-                    
-                    LineMark(x: PlottableValue.value("Day", sell.date!), y: PlottableValue.value("Price", sell.price))
-                            .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
-                            
+                ForEach(viewModel.products, id: \.id) { product in
+                    BarMark(
+                                            x: .value("Weekday", product.dateProduct!),
+                                            y: .value("Count", product.stock)
+                                        )
                 }
             }
             .frame(height:200)

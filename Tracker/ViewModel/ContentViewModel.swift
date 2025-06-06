@@ -8,6 +8,8 @@ class ContentViewModel: ObservableObject {
     @Published var sells: [Sell] = []
     @Published var events: [Event] = []
     
+    @Published var totalSell: Double = 0
+    
     //MARK: - Product and sell Log viewModel
     func getProduct() {
         products = CoreDataController.shared.fetchAllProducts()
@@ -44,6 +46,7 @@ class ContentViewModel: ObservableObject {
     func sellProduct(_ product: Product){
         CoreDataController.shared.sellProduct(product)
         CreateSell(product: product)
+        totalSell += product.priceSell
     }
     
     func undoSell(_ product: Product){

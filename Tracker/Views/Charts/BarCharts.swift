@@ -3,17 +3,17 @@ import Charts
 
 struct BarCharts: View {
     @ObservedObject var viewModel = ContentViewModel()
-
+    
     var body: some View {
         VStack {
-            LineChart()
+    
             Chart{
-                ForEach(viewModel.products, id: \.self) { product in
-                    
-                    BarMark(x: PlottableValue.value("Product", product.name!), y: PlottableValue.value("Sold", product.sold))
-                            .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
-                            
-                }
+                
+                BarMark(x: PlottableValue.value("Product", 10), y: PlottableValue.value("Sold", 20))
+                    .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
+                
+                
+                
             }
             .frame(height:200)
             .chartLegend(position: .top, alignment: .bottomTrailing)
@@ -21,8 +21,8 @@ struct BarCharts: View {
             .background(.textField)
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .chartForegroundStyleScale([
-                                "Products": Color(.princessBlue)
-                                 ])
+                "Products": Color(.princessBlue)
+            ])
             .padding(.vertical)
             .shadow(radius: 5)
         }

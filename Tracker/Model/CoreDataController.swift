@@ -182,6 +182,4 @@ class CoreDataController: ObservableObject {
 
 }
 
-//extension Product: Identifiable {
-//    
-//}
+
