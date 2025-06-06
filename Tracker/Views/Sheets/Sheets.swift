@@ -1,12 +1,12 @@
 import SwiftUI
 
+//TODO: Updtae save funcs for creating a new sheet
+
+
 struct Sheets: View {
-    
     
     @StateObject var viewModel = ContentViewModel()
     @State private var showingSheet: Bool = false
-    
-    
     @State var searchText: String = "" // Used in Search bar
     
     var searchReults: [Product] {
@@ -20,29 +20,17 @@ struct Sheets: View {
     }
     
     var body: some View {
-        
         NavigationStack {
             VStack {
-                List(searchReults) { product in
-                    Section {
-                        ProductView(product: product)
-                    }
-                    .swipeActions {
-                        Button(role: .destructive) {
-                            viewModel.deleteProduct(product)
-                        } label: {
-                            Image(systemName: "trash")
-                        }
-                    }
-                }
+                Color("Background").ignoresSafeArea()
                 
-                .listStyle(.insetGrouped)
             }
-            .navigationTitle("Product")
+            .navigationTitle("Planilhas")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         showingSheet.toggle()
+                        
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -50,7 +38,7 @@ struct Sheets: View {
                     .sheet(isPresented: $showingSheet, onDismiss: {
                         viewModel.getProduct()
                     }) {
-                        CreateProductForm()
+                        CreateSheetView(product: Product())
                     }
                 }
             }
@@ -59,11 +47,9 @@ struct Sheets: View {
             }
             .searchable(text: $searchText)
         }
-        
     }
 }
 
-
 #Preview {
-    ProductStockView()
+    Sheets()
 }
