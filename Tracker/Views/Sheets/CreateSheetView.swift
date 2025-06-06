@@ -17,7 +17,7 @@ struct CreateSheetView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     
                     Button("Salvar") {
-//                        fetchAllSheets()
+                        
                         dismiss()
                     }
                 }
