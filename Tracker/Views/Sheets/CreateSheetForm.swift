@@ -20,20 +20,14 @@ struct CreateSheetForm: View {
         NavigationStack{
 
             VStack{
-                Text("Linhas")
-                    .bold()
-                    .font(.largeTitle)
                 
-                Form{
-                    Text("Name")
-                        .listRowSeparator(.visible)
-                }
-                Text("Colunas")
-                    .font(.largeTitle)
-                    .bold()
+                AtributesForm(title: "Linhas")
+                AtributesForm(title: "Colunas")
+
+
             }
         
-            .navigationTitle("Criar")
+            .navigationTitle("Nova Planilha")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
