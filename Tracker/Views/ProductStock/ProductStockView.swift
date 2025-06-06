@@ -60,7 +60,7 @@ struct ProductStockView: View {
             }
             .searchable(text: $searchText)
         }
-        
+
     }
 }
 
