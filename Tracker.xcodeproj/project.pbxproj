@@ -61,6 +61,7 @@
 				Views/Charts/BarCharts/BarCharts.swift,
 				Views/Charts/LinearCharts/ProductLineChart.swift,
 				Views/Charts/LinearCharts/SellsLineChart.swift,
+				Views/Charts/PieCharts/ProductSellPieChart.swift,
 			);
 			target = 3CCC68E92DF20F0B00C6A7C0 /* SalesWidgetExtension */;
 		};

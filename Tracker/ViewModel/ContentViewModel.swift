@@ -17,15 +17,6 @@ class LineChartItem: Identifiable {
     }
 }
 
-class ProfitPieItem: Identifiable {
-    var bought: Double = 0.0
-    var sold: Double = 0.0
-
-    init(bougth: Double, sold: Double) {
-        self.bought = bougth
-        self.sold = sold
-    }
-}
 
 
 //MARK: -  Content View Model
@@ -33,9 +24,6 @@ class ContentViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var sells: [Sell] = []
     @Published var events: [Event] = []
-    
-    @Published var totalSell: Double = 0
-    @Published var totalBuy: Double = 0
     
     /*Chart Vars*/
     @Published var linearChartData: [LineChartItem] = []
@@ -56,7 +44,6 @@ class ContentViewModel: ObservableObject {
     func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double,sold: Double, stock: Double, dateProduct: Date) {
         let result = CoreDataController.shared.createProduct(id: id, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock, dateProduct: dateProduct)
         
-        totalBuy += priceBuy
         self.products.append(result)
     }
     
@@ -80,7 +67,6 @@ class ContentViewModel: ObservableObject {
     func sellProduct(_ product: Product){
         CoreDataController.shared.sellProduct(product)
         CreateSell(product: product)
-        totalSell += product.priceSell
     }
     
     func undoSell(_ product: Product){
@@ -122,15 +108,7 @@ class ContentViewModel: ObservableObject {
         })
     }
     
-    /*Pie Chart*/
 
-//    private func generatePieProfitData() {
-//        ProfitPieItem = sells.compactMap({ sell -> LineChartItem? in
-//            guard let date = sell.date else { return nil }
-//            return LineChartItem(date: date.onlyDate, stock: sell.price)
-//        })
-//    }
-    
     
 }
 

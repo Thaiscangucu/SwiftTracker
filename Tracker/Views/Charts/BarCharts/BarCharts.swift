@@ -7,8 +7,8 @@ struct ProductBarCharts: View {
     var body: some View {
         VStack {
             //SellsLineChart(LineData: viewModel.linearSellsData)
-            ProductLineChart(LineData: viewModel.linearChartData)
-
+            //ProductLineChart(LineData: viewModel.linearChartData)
+            ProductSellPieChart(viewModel: viewModel)
             if !viewModel.products.isEmpty{
                 Chart{
                     ForEach(viewModel.products){ product in
