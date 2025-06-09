@@ -4,10 +4,10 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SalesWidgetExtension.xcscheme_^#shared#^_</key>
+		<key>SellsWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Tracker.xcscheme_^#shared#^_</key>
 		<dict>
@@ -18,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>08C4DDA42DE647350015C0E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3C25999D2DF76C5E002748D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

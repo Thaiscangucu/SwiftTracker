@@ -27,6 +27,8 @@ struct ContentView: View {
                 .tabItem{
                     Label("Sheets", systemImage: "doc.text")
                 }
+                .toolbarBackground(.navy, for: .tabBar)
+                            .toolbarBackground(.visible, for: .tabBar)
         }
         
     }
