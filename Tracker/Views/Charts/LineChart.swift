@@ -37,14 +37,11 @@ struct LineChart: View {
 /*
 
 
-struct LineChart: View {
-    @ObservedObject var viewModel: ProdutoViewModel
-    
-    let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        return formatter
-    }()
+import SwiftUI
+import Charts
+
+struct EstoqueChartView: View {
+    @ObservedObject var viewModel = ContentViewModel()
     
     var body: some View {
         VStack {
@@ -52,10 +49,10 @@ struct LineChart: View {
                 Chart {
                     ForEach(viewModel.products.compactMap({ product in
                         guard let date = product.dateProduct else { return nil }
-                        return (date: date, stock: product.stock)
+                        return (date: date.onlyDate, stock: product.stock)
                     }), id: \.date) { item in
                         LineMark(
-                            x: .value("Data", dateFormatter.string(from: item.date)),
+                            x: .value("Dia", item.date),
                             y: .value("Estoque", item.stock)
                         )
                     }
