@@ -6,13 +6,13 @@ struct CalendarView: View {
     
     @ObservedObject var viewModel = ContentViewModel()
     
-
+    
     var body: some View {
         NavigationStack{
             VStack{
                 DatePicker("Select Date", selection: $date, displayedComponents: [.date])
                     .datePickerStyle(.graphical)
-  
+                
                 HStack{
                     Text("Date is \(date.formatted(date: .long, time: .omitted))")
                         .font(.title3)
@@ -31,28 +31,39 @@ struct CalendarView: View {
                 .padding()
                 
                 NavigationLink(destination: CalendarProductData(productdate: date), label:{
-                    List{
-                        Section{
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 365, height: 40)
+                        .foregroundStyle(Color.white)
+                        .overlay {
                             HStack{
                                 Text("Sell Today")
+                                    .foregroundStyle(Color.black)
                                 Spacer()
-                                Image(systemName: "arrow.right")
-                            }                        }
-                    }
+                                Image(systemName: "chevron.right")
+                                    .foregroundStyle(Color.black)
+                            }
+                            .padding()
+                           
+                        }
+                    
                 })
                 
                 NavigationLink(destination: CalendarEventDate(eventdate: date), label:{
-                    List{
-                        Section{
+                    RoundedRectangle(cornerRadius: 10)
+                        .frame(width: 365, height: 40)
+                        .foregroundStyle(Color.white)
+                        .overlay {
                             HStack{
                                 Text("Event Today")
+                                    .foregroundStyle(Color.black)
                                 Spacer()
-                                Image(systemName: "arrow.right")
+                                Image(systemName: "chevron.right")
+                                    .foregroundStyle(Color.black)
                             }
-                            
+                            .padding()
                         }
-                    }
-                       
+                    
+                    
                 })
                 
                 

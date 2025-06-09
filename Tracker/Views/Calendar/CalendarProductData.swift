@@ -25,8 +25,10 @@ struct CalendarProductData: View {
             }
             .listStyle(.insetGrouped)
             .onAppear {
-                viewModel.getProduct()
+                viewModel.getSell()
             }
+            
+            Text("")
             
             
         }
