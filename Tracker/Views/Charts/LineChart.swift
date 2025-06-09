@@ -1,55 +1,26 @@
-import Charts
 import SwiftUI
+import Foundation
+import Charts
 
-struct LineChart: View {
-    @ObservedObject var viewModel = ContentViewModel()
 
-    var body: some View {
-        //TODO: - Não Aparece os dados
-        VStack {
-            Chart{
-                ForEach(viewModel.products, id: \.id) { product in
-                    BarMark(
-                                            x: .value("Weekday", product.dateProduct!),
-                                            y: .value("Count", product.stock)
-                                        )
-                }
-            }
-            .frame(height:200)
-            .chartLegend(position: .top, alignment: .bottomTrailing)
-            .chartYAxis(.hidden)
-            .background(.textField)
-            .clipShape(RoundedRectangle(cornerRadius: 15))
-            .chartForegroundStyleScale([
-                                "Products": Color(.princessBlue)
-                                 ])
-            .padding(.vertical)
-            .shadow(radius: 5)
-        }
-        .padding()
-        .onAppear{
-            viewModel.getSell()
-        }
+extension Date {
+    var onlyDate: Date {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: self)
+        return calendar.date(from: components)!
     }
 }
 
-
-/*
-
-
-import SwiftUI
-import Charts
-
-struct EstoqueChartView: View {
+struct LineChart: View {
     @ObservedObject var viewModel = ContentViewModel()
     
     var body: some View {
         VStack {
             if !viewModel.products.isEmpty {
                 Chart {
-                    ForEach(viewModel.products.compactMap({ product in
+                    ForEach(viewModel.products.compactMap({ product -> (date: Date, stock: Double)? in
                         guard let date = product.dateProduct else { return nil }
-                        return (date: date.onlyDate, stock: product.stock)
+                        return (date.onlyDate, product.stock)
                     }), id: \.date) { item in
                         LineMark(
                             x: .value("Dia", item.date),
@@ -69,5 +40,5 @@ struct EstoqueChartView: View {
     }
 }
 
-*/
+
 

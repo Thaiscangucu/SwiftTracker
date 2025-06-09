@@ -10,6 +10,8 @@ class ContentViewModel: ObservableObject {
     
     @Published var totalSell: Double = 0
     @Published var totalBuy: Double = 0
+    
+    
 
     
     //MARK: - Product and sell Log viewModel
