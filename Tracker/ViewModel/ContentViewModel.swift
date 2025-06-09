@@ -43,21 +43,25 @@ class ContentViewModel: ObservableObject {
     }
     
     func updateProductValue(products: [Product]) {
-        for product in products {
-            totalBuy += (product.priceBuy * product.originalAmount)
-        }
+    totalBuy = 0
+    for product in products {
+        totalBuy += (product.priceBuy * product.originalAmount)
     }
+}
+
+func updateSellValue(sells: [Sell]) {
+    totalSell = 0
+    for sell in sells {
+        totalSell += sell.price
+    }
+}
     
     func getSell() {
         sells = CoreDataController.shared.fetchAllSells()
         generateLinearSellsChartData()
     }
     
-    func updateSellValue(sells: [Sell]) {
-        for sell in sells {
-            totalSell += sell.price
-        }
-    }
+   
     
     func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double,sold: Double, stock: Double, dateProduct: Date) {
         let result = CoreDataController.shared.createProduct(id: id, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock, dateProduct: dateProduct)
