@@ -3,6 +3,8 @@ import Charts
 
 //Erro ao adcionar uma nova venda, ele nao soma. e quando eu deleto a venda(back ele nao remove do grafico)
 
+//Testar primeiro transformando essa struct em classe
+
 struct PieProfitChart: Identifiable {
     let id = UUID()
     let title: String
@@ -14,9 +16,6 @@ struct ProductSellPieChart: View {
     @State public var products: [PieProfitChart] = []
     
     var body: some View {
-        
-        
-        
         Chart(products) { product in
             SectorMark(
                 angle: .value(
