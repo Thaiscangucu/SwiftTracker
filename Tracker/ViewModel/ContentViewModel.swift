@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-//MARK: -  Content View Model
+//MARK: - Chart ViewModel
 
 class LineChartItem: Identifiable {
     var date: Date = Date()
@@ -17,6 +17,18 @@ class LineChartItem: Identifiable {
     }
 }
 
+class ProfitPieItem: Identifiable {
+    var bought: Double = 0.0
+    var sold: Double = 0.0
+
+    init(bougth: Double, sold: Double) {
+        self.bought = bougth
+        self.sold = sold
+    }
+}
+
+
+//MARK: -  Content View Model
 class ContentViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var sells: [Sell] = []
@@ -109,6 +121,15 @@ class ContentViewModel: ObservableObject {
             return LineChartItem(date: date.onlyDate, stock: sell.price)
         })
     }
+    
+    /*Pie Chart*/
+
+//    private func generatePieProfitData() {
+//        ProfitPieItem = sells.compactMap({ sell -> LineChartItem? in
+//            guard let date = sell.date else { return nil }
+//            return LineChartItem(date: date.onlyDate, stock: sell.price)
+//        })
+//    }
     
     
 }
