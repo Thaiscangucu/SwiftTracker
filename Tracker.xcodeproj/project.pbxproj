@@ -51,11 +51,26 @@
 			);
 			target = 3CCC68E92DF20F0B00C6A7C0 /* SalesWidgetExtension */;
 		};
+		AB9EDC7E2DF7645B001F6C62 /* Exceptions for "Tracker" folder in "SalesWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				Model/CoreDataController.swift,
+				Model/Tracker.xcdatamodeld,
+				ViewModel/ContentViewModel.swift,
+				Views/Charts/BarCharts.swift,
+				Views/Charts/LineChart.swift,
+			);
+			target = 3CCC68E92DF20F0B00C6A7C0 /* SalesWidgetExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		08C4DDA72DE647350015C0E1 /* Tracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AB9EDC7E2DF7645B001F6C62 /* Exceptions for "Tracker" folder in "SalesWidgetExtension" target */,
+			);
 			path = Tracker;
 			sourceTree = "<group>";
 		};

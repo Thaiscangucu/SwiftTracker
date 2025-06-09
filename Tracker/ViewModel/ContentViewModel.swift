@@ -3,6 +3,20 @@ import CoreData
 
 //MARK: -  Content View Model
 
+class LineChartItem: Identifiable {
+    var date: Date = Date()
+    var stock: Double = 0.0
+    
+    init(date: Date, stock: Double) {
+        self.date = date
+        self.stock = stock
+    }
+    
+    var description: String {
+        return "\(date) - \(stock)"
+    }
+}
+
 class ContentViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var sells: [Sell] = []
@@ -11,12 +25,16 @@ class ContentViewModel: ObservableObject {
     @Published var totalSell: Double = 0
     @Published var totalBuy: Double = 0
     
+    /*Chart Vars*/
+    @Published var linearChartData: [LineChartItem] = []
+    
     
 
     
     //MARK: - Product and sell Log viewModel
     func getProduct() {
         products = CoreDataController.shared.fetchAllProducts()
+        generateChartData()
     }
     
     func getSell() {
@@ -73,5 +91,18 @@ class ContentViewModel: ObservableObject {
     func deleteEvent(_ event: Event) {
         CoreDataController.shared.deleteEvent(event)
     }
+    
+    
+    //MARK: Creating Chart Structs
+    
+    /*Linear Chart*/
+    private func generateChartData() {
+        linearChartData = products.compactMap({ product -> LineChartItem? in
+            guard let date = product.dateProduct else { return nil }
+            return LineChartItem(date: date.onlyDate, stock: product.stock)
+        })
+    }
+    
+    /**/
 }
 

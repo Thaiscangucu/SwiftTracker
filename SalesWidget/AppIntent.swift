@@ -1,10 +1,3 @@
-//
-//  AppIntent.swift
-//  SalesWidget
-//
-//  Created by Thais Cangucu on 05/06/25.
-//
-
 import WidgetKit
 import AppIntents
 

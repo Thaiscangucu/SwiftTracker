@@ -12,31 +12,29 @@ extension Date {
 }
 
 struct LineChart: View {
-    @ObservedObject var viewModel = ContentViewModel()
+    var LineData: [LineChartItem]
     
     var body: some View {
         VStack {
-            if !viewModel.products.isEmpty {
-                Chart {
-                    ForEach(viewModel.products.compactMap({ product -> (date: Date, stock: Double)? in
-                        guard let date = product.dateProduct else { return nil }
-                        return (date.onlyDate, product.stock)
-                    }), id: \.date) { item in
-                        LineMark(
-                            x: .value("Dia", item.date),
-                            y: .value("Estoque", item.stock)
-                        )
-                    }
-                }
-                .frame(height: 300)
-                .padding()
-            } else {
-                Text("Sem dados para exibir o gráfico.")
-                    .foregroundColor(.gray)
-                    .padding()
+            Chart(LineData) {
+                LineMark(
+                    x: .value("Dia", $0.date),
+                    y: .value("Estoque", $0.stock)
+                )
+                .foregroundStyle(.princessBlue)
+                
             }
+            .frame(height:200)
+            .chartLegend(position: .top, alignment: .bottomTrailing)
+            .chartYAxis(.hidden)
+            .background(.textField)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .chartForegroundStyleScale([
+                "Produtos em estoque": Color(.princessBlue)
+            ])
+            .padding(.vertical)
+            .shadow(radius: 5)
         }
-        .navigationTitle("Evolução do Estoque")
     }
 }
 
