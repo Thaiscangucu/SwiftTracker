@@ -6,10 +6,7 @@ struct CalendarView: View {
     
     @ObservedObject var viewModel = ContentViewModel()
     
-    
-    
 
-    
     var body: some View {
         NavigationStack{
             VStack{
@@ -34,12 +31,30 @@ struct CalendarView: View {
                 .padding()
                 
                 NavigationLink(destination: CalendarProductData(productdate: date), label:{
-                    Text("Product Today")
+                    List{
+                        Section{
+                            HStack{
+                                Text("Sell Today")
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                            }                        }
+                    }
                 })
                 
                 NavigationLink(destination: CalendarEventDate(eventdate: date), label:{
-                    Text("Event Today")
+                    List{
+                        Section{
+                            HStack{
+                                Text("Event Today")
+                                Spacer()
+                                Image(systemName: "arrow.right")
+                            }
+                            
+                        }
+                    }
+                       
                 })
+                
                 
                 
                 

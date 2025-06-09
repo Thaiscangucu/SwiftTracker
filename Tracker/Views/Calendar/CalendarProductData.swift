@@ -11,22 +11,24 @@ struct CalendarProductData: View {
     var productdate = Date()
     @ObservedObject var viewModel = ContentViewModel()
     
-    var filterProductDate: [Product] {
-        viewModel.products.filter {
-            dateFormater(date: $0.dateProduct!) == dateFormater(date: productdate)
+    var filterProductDate: [Sell] {
+        viewModel.sells.filter {
+            dateFormater(date: $0.date!) == dateFormater(date: productdate)
         }
     }
     var body: some View {
         VStack{
-            List(filterProductDate) { product in
+            List(filterProductDate) { sells in
                 Section {
-                    ProductView(product: product)
+                    SellView(sell: sells)
                 }
             }
             .listStyle(.insetGrouped)
             .onAppear {
                 viewModel.getProduct()
             }
+            
+            
         }
     }
 }
