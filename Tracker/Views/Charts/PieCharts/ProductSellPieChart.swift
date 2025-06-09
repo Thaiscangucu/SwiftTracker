@@ -1,6 +1,8 @@
 import SwiftUI
 import Charts
 
+//Erro ao adcionar uma nova venda, ele nao soma. e quando eu deleto a venda(back ele nao remove do grafico)
+
 struct PieProfitChart: Identifiable {
     let id = UUID()
     let title: String
@@ -11,11 +13,9 @@ struct ProductSellPieChart: View {
     @StateObject var viewModel: ContentViewModel
     @State public var products: [PieProfitChart] = []
     
-    @State var totalSell: Double = 0
-    @State var totalBuy: Double = 0
-
-    
     var body: some View {
+        
+        
         
         Chart(products) { product in
             SectorMark(
@@ -32,8 +32,11 @@ struct ProductSellPieChart: View {
             )
         }
         .onAppear {
-            products.append(PieProfitChart(title: "Vendido", revenue: totalBuy))
-            products.append(PieProfitChart(title: "Vendido", revenue: totalSell))
+            viewModel.updateProductValue(products: viewModel.products)
+            viewModel.updateSellValue(sells: viewModel.sells)
+            
+            products.append(PieProfitChart(title: "Compras", revenue: viewModel.totalBuy))
+            products.append(PieProfitChart(title: "Vendido", revenue: viewModel.totalSell))
             
         }
         

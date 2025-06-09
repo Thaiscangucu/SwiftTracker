@@ -45,6 +45,7 @@ class CoreDataController: ObservableObject {
         product.sold = sold
         product.stock = stock
         product.dateProduct = Date.now
+        product.originalAmount = stock
         
         saveContext()
         return product

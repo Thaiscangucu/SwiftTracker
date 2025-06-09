@@ -1,5 +1,6 @@
 import Foundation
 import CoreData
+import SwiftUI
 
 //MARK: - Chart ViewModel
 
@@ -28,17 +29,34 @@ class ContentViewModel: ObservableObject {
     /*Chart Vars*/
     @Published var linearChartData: [LineChartItem] = []
     @Published var linearSellsData: [LineChartItem] = []
+    
+    @Published var totalSell: Double = 0
+    @Published var totalBuy: Double = 0
 
 
     //MARK: - Product and sell Log viewModel
     func getProduct() {
         products = CoreDataController.shared.fetchAllProducts()
+ 
         generateLinearProductChartData()
+  
+    }
+    
+    func updateProductValue(products: [Product]) {
+        for product in products {
+            totalBuy += (product.priceBuy * product.originalAmount)
+        }
     }
     
     func getSell() {
         sells = CoreDataController.shared.fetchAllSells()
         generateLinearSellsChartData()
+    }
+    
+    func updateSellValue(sells: [Sell]) {
+        for sell in sells {
+            totalSell += sell.price
+        }
     }
     
     func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double,sold: Double, stock: Double, dateProduct: Date) {
