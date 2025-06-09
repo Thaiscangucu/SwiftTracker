@@ -58,8 +58,9 @@
 				Model/CoreDataController.swift,
 				Model/Tracker.xcdatamodeld,
 				ViewModel/ContentViewModel.swift,
-				Views/Charts/BarCharts.swift,
-				Views/Charts/LineChart.swift,
+				Views/Charts/BarCharts/BarCharts.swift,
+				Views/Charts/LinearCharts/ProductLineChart.swift,
+				Views/Charts/LinearCharts/SellsLineChart.swift,
 			);
 			target = 3CCC68E92DF20F0B00C6A7C0 /* SalesWidgetExtension */;
 		};

@@ -5,7 +5,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView{
-            BarCharts()
+            ProductBarCharts()
                 .tabItem{
                     Label("Dashboard", systemImage: "chart.xyaxis.line")
                 }

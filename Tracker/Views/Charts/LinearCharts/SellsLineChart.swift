@@ -3,15 +3,7 @@ import Foundation
 import Charts
 
 
-extension Date {
-    var onlyDate: Date {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: self)
-        return calendar.date(from: components)!
-    }
-}
-
-struct LineChart: View {
+struct SellsLineChart: View {
     var LineData: [LineChartItem]
     
     var body: some View {
@@ -19,7 +11,7 @@ struct LineChart: View {
             Chart(LineData) {
                 LineMark(
                     x: .value("Dia", $0.date),
-                    y: .value("Estoque", $0.stock)
+                    y: .value("Vendas", $0.stock)
                 )
                 .foregroundStyle(.princessBlue)
                 
@@ -30,7 +22,7 @@ struct LineChart: View {
             .background(.textField)
             .clipShape(RoundedRectangle(cornerRadius: 15))
             .chartForegroundStyleScale([
-                "Produtos em estoque": Color(.princessBlue)
+                "Valor Arrecadado por dia": Color(.princessBlue)
             ])
             .padding(.vertical)
             .shadow(radius: 5)

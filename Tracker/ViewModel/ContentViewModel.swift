@@ -27,18 +27,18 @@ class ContentViewModel: ObservableObject {
     
     /*Chart Vars*/
     @Published var linearChartData: [LineChartItem] = []
-    
-    
+    @Published var linearSellsData: [LineChartItem] = []
 
-    
+
     //MARK: - Product and sell Log viewModel
     func getProduct() {
         products = CoreDataController.shared.fetchAllProducts()
-        generateChartData()
+        generateLinearProductChartData()
     }
     
     func getSell() {
         sells = CoreDataController.shared.fetchAllSells()
+        generateLinearSellsChartData()
     }
     
     func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double,sold: Double, stock: Double, dateProduct: Date) {
@@ -93,16 +93,23 @@ class ContentViewModel: ObservableObject {
     }
     
     
-    //MARK: Creating Chart Structs
+    //MARK:- Creating Chart Structs
     
     /*Linear Chart*/
-    private func generateChartData() {
+    private func generateLinearProductChartData() {
         linearChartData = products.compactMap({ product -> LineChartItem? in
             guard let date = product.dateProduct else { return nil }
             return LineChartItem(date: date.onlyDate, stock: product.stock)
         })
     }
     
-    /**/
+    private func generateLinearSellsChartData() {
+        linearSellsData = sells.compactMap({ sell -> LineChartItem? in
+            guard let date = sell.date else { return nil }
+            return LineChartItem(date: date.onlyDate, stock: sell.price)
+        })
+    }
+    
+    
 }
 
