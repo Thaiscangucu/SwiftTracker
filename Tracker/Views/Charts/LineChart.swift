@@ -34,3 +34,43 @@ struct LineChart: View {
 }
 
 
+/*
+
+
+struct LineChart: View {
+    @ObservedObject var viewModel: ProdutoViewModel
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter
+    }()
+    
+    var body: some View {
+        VStack {
+            if !viewModel.products.isEmpty {
+                Chart {
+                    ForEach(viewModel.products.compactMap({ product in
+                        guard let date = product.dateProduct else { return nil }
+                        return (date: date, stock: product.stock)
+                    }), id: \.date) { item in
+                        LineMark(
+                            x: .value("Data", dateFormatter.string(from: item.date)),
+                            y: .value("Estoque", item.stock)
+                        )
+                    }
+                }
+                .frame(height: 300)
+                .padding()
+            } else {
+                Text("Sem dados para exibir o gráfico.")
+                    .foregroundColor(.gray)
+                    .padding()
+            }
+        }
+        .navigationTitle("Evolução do Estoque")
+    }
+}
+
+*/
+
