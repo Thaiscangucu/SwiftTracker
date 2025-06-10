@@ -24,7 +24,7 @@ struct SellsLineChart: View {
             .chartForegroundStyleScale([
                 "Valor Arrecadado por dia": Color(.princessBlue)
             ])
-            .padding(.vertical)
+            .padding()
             .shadow(radius: 5)
         }
     }

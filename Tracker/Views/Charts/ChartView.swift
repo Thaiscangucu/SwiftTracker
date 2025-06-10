@@ -12,7 +12,7 @@ struct ChartView: View {
                     ProductBarCharts(viewModel: viewModel)
                     HStack{
                         ProductLineChart(LineData: viewModel.linearChartData)
-                        Spacer()
+                            .padding(.trailing, 50)
                         ProductSellPieChart(viewModel: viewModel)
                     }
                     .padding(.horizontal)
