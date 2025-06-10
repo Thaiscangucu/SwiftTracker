@@ -20,14 +20,15 @@ struct CreateProductForm: View {
 
                 Form {
                     /*Get user input*/
-                    TextField("Name", text: $name)
+                    TextField("Nome", text: $name)
                         .listRowSeparator(.visible)
                         .listRowBackground(Color.textField)
 
                     HStack{
-                        Text("Stock:       ")
+                        Text("Estoque:       ")
                         TextField("", value: $stock, format: .number)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+
                         
                     }
                     .listRowSeparator(.hidden)
@@ -35,7 +36,7 @@ struct CreateProductForm: View {
 
                     
                     HStack{
-                        Text("Price Buy: ")
+                        Text("Preço de Compra: ")
                         TextField("", value: $priceBuy, format: .number)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
 
@@ -45,7 +46,7 @@ struct CreateProductForm: View {
 
                     
                     HStack{
-                        Text("Price Sell:  ")
+                        Text("Preço de Venda:  ")
                         TextField("", value: $priceSell, format: .number)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
@@ -54,7 +55,7 @@ struct CreateProductForm: View {
 
                     
                     HStack{
-                        Text("Sold:          ")
+                        Text("Vendido:          ")
                         TextField("", value: $sold, format: .number)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }

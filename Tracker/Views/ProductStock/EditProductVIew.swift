@@ -28,24 +28,24 @@ struct EditProductVIew: View {
                 Form {
                     /*Let the user acess only the atribute he wants*/
                     HStack{
-                        Text("Name: ")
+                        Text("Nome: ")
                         TextField("", text: $name)
                             .foregroundStyle(.secondary)
 
                     }
                     HStack{
-                        Text("Stock: ")
+                        Text("Estoque: ")
                         TextField("", value: $stock, format: .number)
                             .foregroundStyle(.secondary)
                     }
                     HStack{
-                        Text("Price Buy: R$")
+                        Text("Comprado por: R$")
                         TextField("", value: $priceBuy, format: .number)
                             .foregroundStyle(.secondary)
 
                     }
                     HStack{
-                        Text("Price Sell: R$")
+                        Text("Vendido por: R$")
                         TextField("", value: $priceSell, format: .number)
                             .foregroundStyle(.secondary)
 
@@ -54,20 +54,20 @@ struct EditProductVIew: View {
                 }
             }
             
-            .navigationTitle("Edit")
+            .navigationTitle("Editar")
             .navigationBarTitleDisplayMode(.inline)
 
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     /*Save Button*/
-                    Button("Save") {
+                    Button("Salvar") {
                         viewModel.editProduct(product: product, name: name, priceBuy: priceBuy, priceSell: priceSell, stock: stock)
                         dismiss()
                     }
                 }
                 /*Cancel Button*/
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button("Cancelar") {
                         dismiss()
                     }
                 }

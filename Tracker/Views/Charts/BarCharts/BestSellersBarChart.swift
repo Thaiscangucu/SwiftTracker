@@ -40,7 +40,7 @@ struct BestSellersBarChart: View {
                 .chartPlotStyle { plot in
                     plot.padding(.trailing, 12)
                 }
-                .frame(width: 200,height: 150)
+                .frame(width: 130,height: 150)
                 .chartLegend(position: .top, alignment: .bottomTrailing)
                 .tint(Color("textColor"))
                 .background(Color(.textField))

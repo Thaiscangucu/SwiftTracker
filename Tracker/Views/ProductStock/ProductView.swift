@@ -24,18 +24,18 @@ struct ProductView: View {
                 
             }
             Divider()
-            Text("Stock: \(product.stock, specifier: "%.0f")")
+            Text("Estoque: \(product.stock, specifier: "%.0f")")
                 .font(.callout)
                 .padding(.bottom, 0.5)
                 .padding(.top)
-            Text("Price (bought): R$\(product.priceBuy, specifier: "%.2f")")
+            Text("Preço de Compra: R$\(product.priceBuy, specifier: "%.2f")")
                 .font(.callout)
                 .padding(.bottom, 0.5)
-            Text("Price (sell): R$\(product.priceSell, specifier: "%.2f")")
+            Text("Preço de Venda: R$\(product.priceSell, specifier: "%.2f")")
                 .font(.callout)
                 .padding(.bottom)
             Divider()
-            Stepper("Sold: \(product.sold, specifier: "%.0f")", onIncrement: {
+            Stepper("Vendidas: \(product.sold, specifier: "%.0f")", onIncrement: {
                 viewModel.sellProduct(product)
                 totalSell += product.priceSell
             }, onDecrement: {

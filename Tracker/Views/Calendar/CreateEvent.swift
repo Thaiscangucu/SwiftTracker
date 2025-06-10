@@ -14,10 +14,16 @@ struct CreateEvent: View {
             VStack{
                 Form {
                     TextField("Name", text: $nameEvent)
+                        .listRowBackground(Color.textField)
+
                     TextField("Event", text: $context)
+                        .listRowBackground(Color.textField)
+
                     DatePicker(selection: $dateEvent, in: Date.now...) {
                         Text("Select a time")
                     }
+                    .listRowBackground(Color.textField)
+
                 }
                 .scrollContentBackground(.hidden)
             }
