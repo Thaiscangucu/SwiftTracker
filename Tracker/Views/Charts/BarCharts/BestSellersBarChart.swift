@@ -1,39 +1,62 @@
 import SwiftUI
 import Charts
+import Foundation
+
+struct ProductRevenue: Identifiable {
+    var id = UUID()
+    var name: String
+    var total: Double
+}
+
+
 
 struct BestSellersBarChart: View {
     @StateObject var viewModel: ContentViewModel
 
     var body: some View {
         VStack {
-            if !viewModel.sells.isEmpty{
-                Chart{
-                    ForEach(viewModel.sells){ sell in
-                        BarMark(x: PlottableValue.value("Sold", sell.price), y: PlottableValue.value("Product", sell.productName ?? ""))
-                            .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
-                        
-                    }}
-                .frame(height:200)
+            // Agrupar vendas por produto
+            let grouped = Dictionary(grouping: viewModel.sells, by: { $0.productName ?? "Desconhecido" })
+            let aggregated: [ProductRevenue] = grouped.map { (key, sells) in
+                ProductRevenue(name: key, total: sells.reduce(0) { $0 + $1.price })
+            }
+
+            let sorted = aggregated.sorted { $0.total > $1.total }
+
+            
+            let maxTotal = sorted.map { $0.total }.max() ?? 0
+            let paddedMax = max(ceil(maxTotal * 1.2), maxTotal + 2.0)
+
+            if !sorted.isEmpty {
+                Chart {
+                    ForEach(Array(sorted.enumerated()), id: \.1.id) { index, product in
+                        BarMark(
+                            x: .value("Total Vendido", product.total),
+                            y: .value("Produto", product.name)
+                        )
+                        .foregroundStyle(index.isMultiple(of: 2) ? Color(.princessBlue) : Color.accentColor)
+                    }
+                }
+                .chartXScale(domain: [0, paddedMax])
+                .chartPlotStyle { plot in
+                    plot.padding(.trailing, 12)
+                }
+                .frame(height: 200)
                 .chartLegend(position: .top, alignment: .bottomTrailing)
-                .background(.textField)
+                .tint(Color("textColor"))
+                .background(Color(.textField))
                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                .chartForegroundStyleScale([
-                    "Products": Color(.princessBlue)
-                ])
                 .padding(.vertical)
                 .shadow(radius: 5)
-            }else{
+            } else {
                 Text("Sem dados para exibir o gráfico.")
                     .foregroundColor(.gray)
                     .padding()
             }
         }
         .padding()
-        .onAppear{
-            viewModel.getProduct()
+        .onAppear {
             viewModel.getSell()
         }
     }
 }
-
-

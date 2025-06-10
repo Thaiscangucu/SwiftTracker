@@ -24,7 +24,7 @@ struct ProductLineChart: View {
                 .foregroundStyle(.princessBlue)
                 
             }
-            .frame(height:200)
+            .frame(width: 150,height:150)
             .chartLegend(position: .top, alignment: .bottomTrailing)
             .chartYAxis(.hidden)
             .background(.textField)

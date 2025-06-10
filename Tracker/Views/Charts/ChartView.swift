@@ -6,10 +6,20 @@ struct ChartView: View {
     var body: some View {
         
         NavigationStack{
-            VStack{
-                CardsSet(viewModel: viewModel)
-                ProductBarCharts(viewModel: viewModel)
-                
+            ScrollView{
+                VStack{
+                    CardsSet(viewModel: viewModel)
+                    ProductBarCharts(viewModel: viewModel)
+                    HStack{
+                        ProductLineChart(LineData: viewModel.linearChartData)
+                        Spacer()
+                        ProductSellPieChart(viewModel: viewModel)
+                    }
+                    .padding(.horizontal)
+                    BestSellersBarChart(viewModel: viewModel)
+                        .padding(.horizontal)
+                    
+                }
             }
             .navigationTitle("Dashboard")
         }

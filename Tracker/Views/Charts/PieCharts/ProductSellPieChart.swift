@@ -1,8 +1,6 @@
 import SwiftUI
 import Charts
 
-/*Simple struct used in pie Chart*/
-
 struct PieProfitChart: Identifiable {
     let id = UUID()
     let title: String
@@ -20,18 +18,33 @@ struct ProductSellPieChart: View {
     }
 
     var body: some View {
-        Chart(products) { product in
-            SectorMark(
-                angle: .value(product.title, product.revenue)
-            )
-            .foregroundStyle(by: .value(product.title, product.title))
+        VStack {
+            if viewModel.totalBuy > 0 || viewModel.totalSell > 0 {
+                Chart(products) { product in
+                    SectorMark(
+                        angle: .value("Valor", product.revenue)
+                    )
+                    .foregroundStyle(by: .value("Categoria", product.title))
+                }
+                .chartForegroundStyleScale([
+                    "Compras": Color(.princessBlue),
+                    "Vendido": Color.accentColor
+                ])
+                .frame(width: 125,height: 125)
+                .padding()
+                .background(Color(.textField))
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .tint(Color("textColor")) // legenda estilizada
+                .shadow(radius: 5)
+            } else {
+                Text("Sem dados para exibir o gráfico.")
+                    .foregroundColor(.gray)
+                    .padding()
+            }
         }
         .onAppear {
-            // Set as 0 to make sure its not duplicating data
             viewModel.totalBuy = 0
             viewModel.totalSell = 0
-
-            // Update data Values
             viewModel.updateProductValue(products: viewModel.products)
             viewModel.updateSellValue(sells: viewModel.sells)
         }

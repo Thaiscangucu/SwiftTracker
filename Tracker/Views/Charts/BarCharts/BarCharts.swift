@@ -6,39 +6,38 @@ struct ProductBarCharts: View {
 
     var body: some View {
         VStack {
-            //SellsLineChart(LineData: viewModel.linearSellsData)
-            //ProductLineChart(LineData: viewModel.linearChartData)
-            //ProductSellPieChart(viewModel: viewModel)
-            //BestSellersBarChart(viewModel: viewModel)
-            if !viewModel.products.isEmpty{
-                Chart{
-                    ForEach(viewModel.products){ product in
-                        BarMark(x: PlottableValue.value("Product", product.name ?? ""), y: PlottableValue.value("Stock", product.stock))
-                            .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
-                        
-                    }}
-                .frame(height:200)
+            if !viewModel.products.isEmpty {
+                let maxStock = viewModel.products.map { $0.stock }.max() ?? 0
+                let paddedMax = maxStock * 1.1  // Garantee Spacing
+
+                Chart {
+                    ForEach(Array(viewModel.products.enumerated()), id: \.1.id) { index, product in
+                        BarMark(
+                            x: PlottableValue.value("Product", product.name ?? ""),
+                            y: PlottableValue.value("Stock", product.stock)
+                        )
+                        .foregroundStyle(index.isMultiple(of: 2) ? Color(.princessBlue) : Color.accentColor)
+                    }
+                }
+                .chartYScale(domain: [0, paddedMax]) // << Folga aqui!
+                .frame(height: 200)
                 .chartLegend(position: .top, alignment: .bottomTrailing)
+                .tint(Color(.text))
                 .chartYAxis(.hidden)
                 .background(.textField)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                .chartForegroundStyleScale([
-                    "Products": Color(.princessBlue)
-                ])
                 .padding(.vertical)
                 .shadow(radius: 5)
-            }else{
+            } else {
                 Text("Sem dados para exibir o gráfico.")
                     .foregroundColor(.gray)
                     .padding()
             }
         }
         .padding()
-        .onAppear{
+        .onAppear {
             viewModel.getProduct()
             viewModel.getSell()
         }
     }
 }
-
-
