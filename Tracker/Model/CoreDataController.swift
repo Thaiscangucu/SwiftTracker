@@ -45,6 +45,7 @@ class CoreDataController: ObservableObject {
         product.sold = sold
         product.stock = stock
         product.dateProduct = Date.now
+        product.originalAmount = stock
         
         saveContext()
         return product
@@ -178,6 +179,17 @@ class CoreDataController: ObservableObject {
     }
     
     //TODO: - edit event function
+
+
+/*
+func createSheet(name: String, attributes: [String]) {
+    let sheet = Sheet(context: viewContext)
+    sheet.name = name
+    sheet.attributes = try? JSONEncoder().encode(attributes).base64EncodedString()
+    saveContext()
+}
+
+*/
     
 
 }

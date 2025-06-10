@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct DoubleCard: View {
+struct EventCard: View {
     
     var title: String
-    var label: String
+    var label: Double
     
-    init(title: String, label: String) {
+    init(title: String, label: Double) {
         self.title = title
         self.label = label
     }
@@ -13,12 +13,12 @@ struct DoubleCard: View {
     
     
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .center){
             Text(title)
                 .font(.system(size: 15))
                 .padding(.bottom, 2)
                 .foregroundStyle(.white)
-            Text(label)
+            Text("\(label, specifier: "%.0f")")
                 .font(.system(size: 25))
                 .fontWeight(.bold)
                 .foregroundStyle(.white)
@@ -30,6 +30,6 @@ struct DoubleCard: View {
 
 
 #Preview {
-    DoubleCard(title: "Vendas", label: "30")
+    EventCard(title: "Vendas", label: 30)
 }
 

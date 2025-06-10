@@ -35,7 +35,7 @@ struct ProductStockView: View {
                 }
                 .listStyle(.insetGrouped)
             }
-            .navigationTitle("Product")
+            .navigationTitle("Produtos")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
