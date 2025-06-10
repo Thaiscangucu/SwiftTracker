@@ -102,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				08C4DDA72DE647350015C0E1 /* Tracker */,
+				ABD16E9C2DF89F6300F3830D /* SalesWidget */,
 				3CCC68EB2DF20F0B00C6A7C0 /* Frameworks */,
 				08C4DDA62DE647350015C0E1 /* Products */,
 			);
@@ -123,6 +124,13 @@
 				3CCC68EE2DF20F0B00C6A7C0 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ABD16E9C2DF89F6300F3830D /* SalesWidget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SalesWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
