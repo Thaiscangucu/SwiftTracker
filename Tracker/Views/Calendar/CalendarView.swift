@@ -13,22 +13,9 @@ struct CalendarView: View {
                 DatePicker("Select Date", selection: $date, displayedComponents: [.date])
                     .datePickerStyle(.graphical)
                 
-                HStack{
-                    Text("Date is \(date.formatted(date: .long, time: .omitted))")
-                        .font(.title3)
-                    
-                    Button {
-                        showingSheetCalendar.toggle()
-                    } label: {
-                        Spacer()
-                        Image(systemName: "plus")
-                    }
-                    .sheet(isPresented: $showingSheetCalendar) {
-                        CreateEvent()
-                    }
-                    
-                }
-                .padding()
+                Text("Date is \(date.formatted(date: .long, time: .omitted))")
+                    .font(.title3)
+                
                 
                 NavigationLink(destination: CalendarProductData(productdate: date), label:{
                     RoundedRectangle(cornerRadius: 10)
@@ -43,7 +30,7 @@ struct CalendarView: View {
                                     .foregroundStyle(Color.black)
                             }
                             .padding()
-                           
+                            
                         }
                     
                 })
@@ -66,15 +53,23 @@ struct CalendarView: View {
                     
                 })
                 
-                
-                
-                
-                
-                
                 Spacer()
             }
             .background(Color.background)
             .navigationTitle("Calendar")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        showingSheetCalendar.toggle()
+                    } label: {
+                        Spacer()
+                        Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $showingSheetCalendar) {
+                        CreateEvent()
+                    }
+                }
+            }
         }
         
         
