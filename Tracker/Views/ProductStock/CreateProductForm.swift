@@ -22,6 +22,8 @@ struct CreateProductForm: View {
                     /*Get user input*/
                     TextField("Name", text: $name)
                         .listRowSeparator(.visible)
+                        .listRowBackground(Color.textField)
+
                     HStack{
                         Text("Stock:       ")
                         TextField("", value: $stock, format: .number)
@@ -29,6 +31,8 @@ struct CreateProductForm: View {
                         
                     }
                     .listRowSeparator(.hidden)
+                    .listRowBackground(Color.textField)
+
                     
                     HStack{
                         Text("Price Buy: ")
@@ -37,6 +41,8 @@ struct CreateProductForm: View {
 
                     }
                     .listRowSeparator(.hidden)
+                    .listRowBackground(Color.textField)
+
                     
                     HStack{
                         Text("Price Sell:  ")
@@ -44,13 +50,20 @@ struct CreateProductForm: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                     .listRowSeparator(.hidden)
+                    .listRowBackground(Color.textField)
+
                     
                     HStack{
                         Text("Sold:          ")
                         TextField("", value: $sold, format: .number)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
+                    .listRowBackground(Color.textField)
+
                 }
+                .scrollContentBackground(.hidden)
+
+            
                 
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -69,6 +82,7 @@ struct CreateProductForm: View {
                     }
                 }
             }
+            .background(Color.background)
             .navigationTitle("Create")
             .navigationBarTitleDisplayMode(.inline)
         }

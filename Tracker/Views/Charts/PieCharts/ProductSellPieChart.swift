@@ -28,7 +28,7 @@ struct ProductSellPieChart: View {
                 }
                 .chartForegroundStyleScale([
                     "Compras": Color(.princessBlue),
-                    "Vendido": Color.accentColor
+                    "Vendido": Color.yellowcolor
                 ])
                 .frame(width: 125,height: 125)
                 .padding()
