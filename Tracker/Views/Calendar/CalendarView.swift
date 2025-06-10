@@ -33,7 +33,7 @@ struct CalendarView: View {
                 NavigationLink(destination: CalendarProductData(productdate: date), label:{
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 365, height: 40)
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(Color.textField)
                         .overlay {
                             HStack{
                                 Text("Sell Today")
@@ -51,7 +51,7 @@ struct CalendarView: View {
                 NavigationLink(destination: CalendarEventDate(eventdate: date), label:{
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 365, height: 40)
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(Color.textField)
                         .overlay {
                             HStack{
                                 Text("Event Today")
