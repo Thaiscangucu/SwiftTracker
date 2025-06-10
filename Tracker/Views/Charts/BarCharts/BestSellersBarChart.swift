@@ -15,7 +15,6 @@ struct BestSellersBarChart: View {
 
     var body: some View {
         VStack {
-            // Agrupar vendas por produto
             let grouped = Dictionary(grouping: viewModel.sells, by: { $0.productName ?? "Desconhecido" })
             let aggregated: [ProductRevenue] = grouped.map { (key, sells) in
                 ProductRevenue(name: key, total: sells.reduce(0) { $0 + $1.price })
@@ -41,7 +40,7 @@ struct BestSellersBarChart: View {
                 .chartPlotStyle { plot in
                     plot.padding(.trailing, 12)
                 }
-                .frame(height: 200)
+                .frame(width: 200,height: 150)
                 .chartLegend(position: .top, alignment: .bottomTrailing)
                 .tint(Color("textColor"))
                 .background(Color(.textField))

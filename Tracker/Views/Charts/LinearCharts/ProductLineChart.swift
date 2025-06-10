@@ -14,6 +14,7 @@ extension Date {
 struct ProductLineChart: View {
     var LineData: [LineChartItem]
     
+    
     var body: some View {
         VStack {
             Chart(LineData) {
@@ -24,7 +25,7 @@ struct ProductLineChart: View {
                 .foregroundStyle(.princessBlue)
                 
             }
-            .frame(width: 150,height:150)
+            .frame(width: 140,height:140)
             .chartLegend(position: .top, alignment: .bottomTrailing)
             .chartYAxis(.hidden)
             .background(.textField)

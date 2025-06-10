@@ -19,8 +19,8 @@ struct ProductBarCharts: View {
                         .foregroundStyle(index.isMultiple(of: 2) ? Color(.princessBlue) : Color.accentColor)
                     }
                 }
-                .chartYScale(domain: [0, paddedMax]) // << Folga aqui!
-                .frame(height: 200)
+                .chartYScale(domain: [0, paddedMax])
+                .frame(width: 380,height: 200)
                 .chartLegend(position: .top, alignment: .bottomTrailing)
                 .tint(Color(.text))
                 .chartYAxis(.hidden)

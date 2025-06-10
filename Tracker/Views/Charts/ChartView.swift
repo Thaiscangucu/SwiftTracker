@@ -16,8 +16,14 @@ struct ChartView: View {
                         ProductSellPieChart(viewModel: viewModel)
                     }
                     .padding(.horizontal)
-                    BestSellersBarChart(viewModel: viewModel)
-                        .padding(.horizontal)
+                    HStack{
+                        BestSellersBarChart(viewModel: viewModel)
+                        Spacer()
+                        SellsLineChart(LineData: viewModel.linearSellsData)
+                    }
+                    .padding(.horizontal)
+
+                    
                     
                 }
             }

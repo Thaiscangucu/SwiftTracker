@@ -16,7 +16,7 @@ struct SellsLineChart: View {
                 .foregroundStyle(.princessBlue)
                 
             }
-            .frame(height:50)
+            .frame(width: 150,height:150)
             .chartLegend(position: .top, alignment: .bottomTrailing)
             .chartYAxis(.hidden)
             .background(.textField)

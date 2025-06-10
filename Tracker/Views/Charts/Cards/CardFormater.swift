@@ -2,7 +2,7 @@ import Foundation
 
 
 func doubleMoneyFormatter(number: Double) -> String {
-    let absNumber = abs(number) // Para garantir que funcione com números negativos
+    let absNumber = abs(number) 
     let sign = number < 0 ? "-" : ""
 
     switch absNumber {
