@@ -1,11 +1,11 @@
 import SwiftUI
 
-//Adicionei tabview
+
 
 struct ContentView: View {
     var body: some View {
         TabView{
-            ProductBarCharts()
+            ChartView()
                 .tabItem{
                     Label("Dashboard", systemImage: "chart.xyaxis.line")
                 }
@@ -34,7 +34,7 @@ struct ContentView: View {
     }
 }
 
-//Testing new Branch
+
 #Preview {
     ContentView()
 }

@@ -1,10 +1,3 @@
-//
-//  CalendarEventDate.swift
-//  Tracker
-//
-//  Created by anshu Li on 06/06/25.
-//
-
 import SwiftUI
 
 struct CalendarEventDate: View {

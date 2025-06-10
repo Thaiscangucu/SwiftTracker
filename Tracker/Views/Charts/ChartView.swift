@@ -1,9 +1,20 @@
-
 import SwiftUI
 
 struct ChartView: View {
+    @ObservedObject var viewModel = ContentViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        NavigationStack{
+            VStack{
+                CardsSet(viewModel: viewModel)
+                ProductBarCharts(viewModel: viewModel)
+                
+            }
+            .navigationTitle("Dashboard")
+        }
+       
+        
     }
 }
 

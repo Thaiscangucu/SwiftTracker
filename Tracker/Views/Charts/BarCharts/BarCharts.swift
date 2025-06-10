@@ -2,14 +2,14 @@ import SwiftUI
 import Charts
 
 struct ProductBarCharts: View {
-    @ObservedObject var viewModel = ContentViewModel()
-    
+    @StateObject var viewModel: ContentViewModel
+
     var body: some View {
         VStack {
             //SellsLineChart(LineData: viewModel.linearSellsData)
             //ProductLineChart(LineData: viewModel.linearChartData)
             //ProductSellPieChart(viewModel: viewModel)
-            BestSellersBarChart(viewModel: viewModel)
+            //BestSellersBarChart(viewModel: viewModel)
             if !viewModel.products.isEmpty{
                 Chart{
                     ForEach(viewModel.products){ product in

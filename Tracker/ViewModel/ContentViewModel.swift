@@ -32,36 +32,45 @@ class ContentViewModel: ObservableObject {
     
     @Published var totalSell: Double = 0
     @Published var totalBuy: Double = 0
-
-
+    @Published var totalProducts: Double = 0
+    @Published var eventsToday: Double = 0
+    
+    
     //MARK: - Product and sell Log viewModel
     func getProduct() {
         products = CoreDataController.shared.fetchAllProducts()
- 
+        
         generateLinearProductChartData()
-  
+        
     }
     
     func updateProductValue(products: [Product]) {
-    totalBuy = 0
-    for product in products {
-        totalBuy += (product.priceBuy * product.originalAmount)
+        totalBuy = 0
+        for product in products {
+            totalBuy += (product.priceBuy * product.originalAmount)
+        }
     }
-}
-
-func updateSellValue(sells: [Sell]) {
-    totalSell = 0
-    for sell in sells {
-        totalSell += sell.price
+    
+    func updateProctCount(products: [Product]) {
+        totalProducts = 0
+        for product in products {
+            totalProducts += product.stock
+        }
     }
-}
+    
+    func updateSellValue(sells: [Sell]) {
+        totalSell = 0
+        for sell in sells {
+            totalSell += sell.price
+        }
+    }
     
     func getSell() {
         sells = CoreDataController.shared.fetchAllSells()
         generateLinearSellsChartData()
     }
     
-   
+    
     
     func createProduct(id: UUID, name: String, priceBuy: Double, priceSell: Double,sold: Double, stock: Double, dateProduct: Date) {
         let result = CoreDataController.shared.createProduct(id: id, name: name, priceBuy: priceBuy, priceSell: priceSell, sold: sold, stock: stock, dateProduct: dateProduct)
@@ -74,7 +83,7 @@ func updateSellValue(sells: [Sell]) {
     func CreateSell (product: Product){
         let result = CoreDataController.shared.CreateSell(product: product)
         self.sells.append(result)
-
+        
     }
     
     func editProduct(product: Product, name: String, priceBuy: Double, priceSell: Double, stock: Double) {
@@ -105,11 +114,17 @@ func updateSellValue(sells: [Sell]) {
         let result = CoreDataController.shared.createEvent(dateEvent: dateEvent, nameEvent: nameEvent, context: context)
         
         self.events.append(result)
-
+        
     }
     
     func deleteEvent(_ event: Event) {
         CoreDataController.shared.deleteEvent(event)
+    }
+    
+    func getTodayEventCount() {
+        let today = Date().onlyDate
+        let count = events.filter { $0.dateEvent?.onlyDate == today }.count
+        eventsToday = Double(count) // já será, por exemplo, 3.0
     }
     
     
@@ -130,7 +145,7 @@ func updateSellValue(sells: [Sell]) {
         })
     }
     
-
+    
     
 }
 

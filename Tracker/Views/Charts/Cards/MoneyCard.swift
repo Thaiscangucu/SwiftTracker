@@ -3,10 +3,10 @@ import SwiftUI
 struct MoneyCard: View {
     
     var title: String
-    var label: Double
+    var label: String
     
     
-    init(title: String, label: Double) {
+    init(title: String, label: String) {
         self.title = title
         self.label = label
     }
@@ -21,8 +21,8 @@ struct MoneyCard: View {
                 .font(.system(size: 15))
                 .padding(.bottom, 2)
                 .foregroundStyle(.white)
-            Text("R$\(label,specifier: "%.0f")")
-                .font(.system(size: 30))
+            Text(label)
+                .font(.system(size: 25))
                 .fontWeight(.bold)
                 .foregroundStyle(.white)
         }
@@ -46,6 +46,6 @@ func textForCard (label: Double) -> String{
 }
 
 #Preview {
-    MoneyCard(title: "Vendas", label: 40)
+    MoneyCard(title: "Vendas", label: "40")
 }
 
