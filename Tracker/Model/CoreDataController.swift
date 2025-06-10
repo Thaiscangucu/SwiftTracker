@@ -179,6 +179,17 @@ class CoreDataController: ObservableObject {
     }
     
     //TODO: - edit event function
+
+
+/*
+func createSheet(name: String, attributes: [String]) {
+    let sheet = Sheet(context: viewContext)
+    sheet.name = name
+    sheet.attributes = try? JSONEncoder().encode(attributes).base64EncodedString()
+    saveContext()
+}
+
+*/
     
 
 }
