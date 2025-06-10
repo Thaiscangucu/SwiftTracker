@@ -33,7 +33,7 @@ struct BestSellersBarChart: View {
                             x: .value("Total Vendido", product.total),
                             y: .value("Produto", product.name)
                         )
-                        .foregroundStyle(index.isMultiple(of: 2) ? Color(.princessBlue) : Color.accentColor)
+                        .foregroundStyle(index.isMultiple(of: 2) ? Color(.princessBlue) : Color.yellowcolor)
                     }
                 }
                 .chartXScale(domain: [0, paddedMax])

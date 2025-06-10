@@ -16,6 +16,7 @@ struct CalendarEventDate: View {
                 Section {
                     EventView(event: ev)
                 }
+                .listRowBackground(Color.textField)
                 .swipeActions {
                     Button(role: .destructive) {
                         viewModel.deleteEvent(ev)
@@ -24,10 +25,12 @@ struct CalendarEventDate: View {
                     }
                 }
             }
+            .scrollContentBackground(.hidden)
             .onAppear(){
                 viewModel.getEvent()
             }
         }
+        .background(Color.background)
     }
 }
 

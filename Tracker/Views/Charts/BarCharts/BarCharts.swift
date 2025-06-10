@@ -16,7 +16,7 @@ struct ProductBarCharts: View {
                             x: PlottableValue.value("Product", product.name ?? ""),
                             y: PlottableValue.value("Stock", product.stock)
                         )
-                        .foregroundStyle(index.isMultiple(of: 2) ? Color(.princessBlue) : Color.accentColor)
+                        .foregroundStyle(index.isMultiple(of: 2) ? Color(.princessBlue) : Color.yellowcolor)
                     }
                 }
                 .chartYScale(domain: [0, paddedMax])

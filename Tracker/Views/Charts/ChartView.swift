@@ -27,6 +27,7 @@ struct ChartView: View {
                     
                 }
             }
+            .background(Color.background)
             .navigationTitle("Dashboard")
         }
        

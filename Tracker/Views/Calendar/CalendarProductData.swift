@@ -22,7 +22,10 @@ struct CalendarProductData: View {
                 Section {
                     SellView(sell: sells)
                 }
+                .listRowBackground(Color.textField)
+                
             }
+            .scrollContentBackground(.hidden)
             .listStyle(.insetGrouped)
             .onAppear {
                 viewModel.getSell()
@@ -32,5 +35,6 @@ struct CalendarProductData: View {
             
     
         }
+        .background(Color.background)
     }
 }

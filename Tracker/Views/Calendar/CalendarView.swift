@@ -19,15 +19,15 @@ struct CalendarView: View {
                 
                 NavigationLink(destination: CalendarProductData(productdate: date), label:{
                     RoundedRectangle(cornerRadius: 10)
-                        .frame(width: 365, height: 40)
+                        .frame(width: 365, height: 45)
                         .foregroundStyle(Color.textField)
                         .overlay {
                             HStack{
                                 Text("Sell Today")
-                                    .foregroundStyle(Color.black)
+                                    .foregroundStyle(Color.text)
                                 Spacer()
                                 Image(systemName: "chevron.right")
-                                    .foregroundStyle(Color.black)
+                                    .foregroundStyle(Color.text)
                             }
                             .padding()
                             
@@ -37,15 +37,15 @@ struct CalendarView: View {
                 
                 NavigationLink(destination: CalendarEventDate(eventdate: date), label:{
                     RoundedRectangle(cornerRadius: 10)
-                        .frame(width: 365, height: 40)
+                        .frame(width: 365, height: 45)
                         .foregroundStyle(Color.textField)
                         .overlay {
                             HStack{
                                 Text("Event Today")
-                                    .foregroundStyle(Color.black)
+                                    .foregroundStyle(Color.text)
                                 Spacer()
                                 Image(systemName: "chevron.right")
-                                    .foregroundStyle(Color.black)
+                                    .foregroundStyle(Color.text)
                             }
                             .padding()
                         }

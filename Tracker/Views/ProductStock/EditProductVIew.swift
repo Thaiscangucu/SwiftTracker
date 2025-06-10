@@ -53,6 +53,7 @@ struct EditProductVIew: View {
                     }
                 }
             }
+            
             .navigationTitle("Edit")
             .navigationBarTitleDisplayMode(.inline)
 

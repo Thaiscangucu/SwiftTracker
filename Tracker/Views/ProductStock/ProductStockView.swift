@@ -24,6 +24,7 @@ struct ProductStockView: View {
                         Section {
                             ProductView(product: product)
                         }
+                        .listRowBackground(Color.textField)
                         .swipeActions {
                             Button(role: .destructive) {
                                 viewModel.deleteProduct(product)
@@ -33,8 +34,10 @@ struct ProductStockView: View {
                         }
                     
                 }
+                .scrollContentBackground(.hidden)
                 .listStyle(.insetGrouped)
             }
+            .background(Color.background)
             .navigationTitle("Produtos")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
@@ -55,7 +58,6 @@ struct ProductStockView: View {
                 viewModel.getProduct()
             }
             .searchable(text: $searchText)
-            .toolbarBackground(.navy, for: .navigationBar)
         }
 
     }
