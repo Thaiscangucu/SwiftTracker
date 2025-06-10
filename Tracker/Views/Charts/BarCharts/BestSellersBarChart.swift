@@ -1,25 +1,20 @@
 import SwiftUI
 import Charts
 
-struct ProductBarCharts: View {
-    @ObservedObject var viewModel = ContentViewModel()
-    
+struct BestSellersBarChart: View {
+    @StateObject var viewModel: ContentViewModel
+
     var body: some View {
         VStack {
-            //SellsLineChart(LineData: viewModel.linearSellsData)
-            //ProductLineChart(LineData: viewModel.linearChartData)
-            //ProductSellPieChart(viewModel: viewModel)
-            BestSellersBarChart(viewModel: viewModel)
-            if !viewModel.products.isEmpty{
+            if !viewModel.sells.isEmpty{
                 Chart{
-                    ForEach(viewModel.products){ product in
-                        BarMark(x: PlottableValue.value("Product", product.name ?? ""), y: PlottableValue.value("Stock", product.stock))
+                    ForEach(viewModel.sells){ sell in
+                        BarMark(x: PlottableValue.value("Sold", sell.price), y: PlottableValue.value("Product", sell.productName ?? ""))
                             .foregroundStyle(.linearGradient(colors: [.princessBlue, .blue], startPoint: .top, endPoint: .bottom))
                         
                     }}
                 .frame(height:200)
                 .chartLegend(position: .top, alignment: .bottomTrailing)
-                .chartYAxis(.hidden)
                 .background(.textField)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .chartForegroundStyleScale([

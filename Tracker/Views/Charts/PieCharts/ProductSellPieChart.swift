@@ -1,7 +1,8 @@
 import SwiftUI
 import Charts
 
-// Classe simples para o gráfico de pizza
+/*Simple struct used in pie Chart*/
+
 struct PieProfitChart: Identifiable {
     let id = UUID()
     let title: String
@@ -26,11 +27,11 @@ struct ProductSellPieChart: View {
             .foregroundStyle(by: .value(product.title, product.title))
         }
         .onAppear {
-            // Zera os totais antes de atualizar (evita soma duplicada)
+            // Set as 0 to make sure its not duplicating data
             viewModel.totalBuy = 0
             viewModel.totalSell = 0
 
-            // Atualiza os dados do gráfico com base nas vendas e compras atuais
+            // Update data Values
             viewModel.updateProductValue(products: viewModel.products)
             viewModel.updateSellValue(sells: viewModel.sells)
         }

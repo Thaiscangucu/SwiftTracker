@@ -59,6 +59,7 @@
 				Model/Tracker.xcdatamodeld,
 				ViewModel/ContentViewModel.swift,
 				Views/Charts/BarCharts/BarCharts.swift,
+				Views/Charts/BarCharts/BestSellersBarChart.swift,
 				Views/Charts/LinearCharts/ProductLineChart.swift,
 				Views/Charts/LinearCharts/SellsLineChart.swift,
 				Views/Charts/PieCharts/ProductSellPieChart.swift,
