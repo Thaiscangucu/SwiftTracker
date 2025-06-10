@@ -9,7 +9,9 @@ struct ChartView: View {
             ScrollView{
                 VStack{
                     CardsSet(viewModel: viewModel)
+                
                     ProductBarCharts(viewModel: viewModel)
+                        .padding(.bottom, 0.1)
                     HStack{
                         ProductLineChart(LineData: viewModel.linearChartData)
                             .padding(.trailing, 50)

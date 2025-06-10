@@ -26,8 +26,13 @@ struct CreateProductForm: View {
 
                     HStack{
                         Text("Estoque:       ")
-                        TextField("", value: $stock, format: .number)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.white)
+                        .frame(height: 30)
+                        .foregroundStyle(Color.textField)
+                        .overlay(
+                            TextField("", value: $stock, format: .number)
+                        )
 
                         
                     }
@@ -37,8 +42,13 @@ struct CreateProductForm: View {
                     
                     HStack{
                         Text("Preço de Compra: ")
-                        TextField("", value: $priceBuy, format: .number)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.white)
+                        .frame(height: 30)
+                        .foregroundStyle(Color.textField)
+                        .overlay(
+                            TextField("", value: $priceBuy, format: .number)
+                        )
 
                     }
                     .listRowSeparator(.hidden)
@@ -47,8 +57,13 @@ struct CreateProductForm: View {
                     
                     HStack{
                         Text("Preço de Venda:  ")
-                        TextField("", value: $priceSell, format: .number)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.white)
+                        .frame(height: 30)
+                        .foregroundStyle(Color.textField)
+                        .overlay(
+                            TextField("", value: $priceSell, format: .number)
+                        )
                     }
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.textField)
@@ -56,8 +71,16 @@ struct CreateProductForm: View {
                     
                     HStack{
                         Text("Vendido:          ")
-                        TextField("", value: $sold, format: .number)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                            RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.white)
+                            .frame(height: 30)
+                            .foregroundStyle(Color.textField)
+                            .overlay(
+                                TextField("", value: $sold, format: .number)
+                            )
+                            
+                            
                     }
                     .listRowBackground(Color.textField)
 

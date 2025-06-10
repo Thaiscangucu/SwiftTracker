@@ -33,17 +33,23 @@ struct EditProductVIew: View {
                             .foregroundStyle(.secondary)
 
                     }
+                    .listRowBackground(Color.textField)
+
                     HStack{
                         Text("Estoque: ")
                         TextField("", value: $stock, format: .number)
                             .foregroundStyle(.secondary)
                     }
+                    .listRowBackground(Color.textField)
+
                     HStack{
                         Text("Comprado por: R$")
                         TextField("", value: $priceBuy, format: .number)
                             .foregroundStyle(.secondary)
 
                     }
+                    .listRowBackground(Color.textField)
+
                     HStack{
                         Text("Vendido por: R$")
                         TextField("", value: $priceSell, format: .number)
@@ -51,9 +57,13 @@ struct EditProductVIew: View {
 
 
                     }
+                    .listRowBackground(Color.textField)
+
                 }
+                .scrollContentBackground(.hidden)
+
             }
-            
+            .background(Color.background)
             .navigationTitle("Editar")
             .navigationBarTitleDisplayMode(.inline)
 
