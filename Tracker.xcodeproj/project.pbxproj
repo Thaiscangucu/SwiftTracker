@@ -44,10 +44,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3C2599AC2DF76C5E002748D7 /* Exceptions for "SellsWidget" folder in "SellsWidgetExtension" target */ = {
+		3CCFB4EC2DF8A10000B7C0FC /* Exceptions for "SellsWidget" folder in "Tracker" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Assets.xcassets,
 				Info.plist,
+				SellsWidget.swift,
+				SellsWidgetBundle.swift,
+			);
+			target = 08C4DDA42DE647350015C0E1 /* Tracker */;
+		};
+		3CCFB4ED2DF8A10000B7C0FC /* Exceptions for "SellsWidget" folder in "SellsWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				SellsWidget.swift,
+				SellsWidgetBundle.swift,
 			);
 			target = 3C25999D2DF76C5E002748D7 /* SellsWidgetExtension */;
 		};
@@ -59,10 +71,11 @@
 			path = Tracker;
 			sourceTree = "<group>";
 		};
-		3C2599A12DF76C5E002748D7 /* SellsWidget */ = {
+		3CCFB4E82DF8A10000B7C0FC /* SellsWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				3C2599AC2DF76C5E002748D7 /* Exceptions for "SellsWidget" folder in "SellsWidgetExtension" target */,
+				3CCFB4EC2DF8A10000B7C0FC /* Exceptions for "SellsWidget" folder in "Tracker" target */,
+				3CCFB4ED2DF8A10000B7C0FC /* Exceptions for "SellsWidget" folder in "SellsWidgetExtension" target */,
 			);
 			path = SellsWidget;
 			sourceTree = "<group>";
@@ -92,8 +105,8 @@
 		08C4DD9C2DE647350015C0E1 = {
 			isa = PBXGroup;
 			children = (
+				3CCFB4E82DF8A10000B7C0FC /* SellsWidget */,
 				08C4DDA72DE647350015C0E1 /* Tracker */,
-				3C2599A12DF76C5E002748D7 /* SellsWidget */,
 				3CCC68EB2DF20F0B00C6A7C0 /* Frameworks */,
 				08C4DDA62DE647350015C0E1 /* Products */,
 			);
@@ -136,6 +149,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				08C4DDA72DE647350015C0E1 /* Tracker */,
+				3CCFB4E82DF8A10000B7C0FC /* SellsWidget */,
 			);
 			name = Tracker;
 			packageProductDependencies = (
@@ -155,9 +169,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				3C2599A12DF76C5E002748D7 /* SellsWidget */,
 			);
 			name = SellsWidgetExtension;
 			packageProductDependencies = (
