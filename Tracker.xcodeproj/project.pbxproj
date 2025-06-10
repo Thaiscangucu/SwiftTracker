@@ -44,13 +44,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		3CCC69012DF20F0C00C6A7C0 /* Exceptions for "SalesWidget" folder in "SalesWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 3CCC68E92DF20F0B00C6A7C0 /* SalesWidgetExtension */;
-		};
 		AB9EDC7E2DF7645B001F6C62 /* Exceptions for "Tracker" folder in "SalesWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -83,14 +76,6 @@
 			path = Tracker;
 			sourceTree = "<group>";
 		};
-		3CCC68F02DF20F0B00C6A7C0 /* SalesWidget */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				3CCC69012DF20F0C00C6A7C0 /* Exceptions for "SalesWidget" folder in "SalesWidgetExtension" target */,
-			);
-			path = SalesWidget;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				08C4DDA72DE647350015C0E1 /* Tracker */,
-				3CCC68F02DF20F0B00C6A7C0 /* SalesWidget */,
 				3CCC68EB2DF20F0B00C6A7C0 /* Frameworks */,
 				08C4DDA62DE647350015C0E1 /* Products */,
 			);
@@ -179,9 +163,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				3CCC68F02DF20F0B00C6A7C0 /* SalesWidget */,
 			);
 			name = SalesWidgetExtension;
 			packageProductDependencies = (
