@@ -13,27 +13,14 @@ struct CalendarView: View {
                 DatePicker("Select Date", selection: $date, displayedComponents: [.date])
                     .datePickerStyle(.graphical)
                 
-                HStack{
-                    Text("Date is \(date.formatted(date: .long, time: .omitted))")
-                        .font(.title3)
-                    
-                    Button {
-                        showingSheetCalendar.toggle()
-                    } label: {
-                        Spacer()
-                        Image(systemName: "plus")
-                    }
-                    .sheet(isPresented: $showingSheetCalendar) {
-                        CreateEvent()
-                    }
-                    
-                }
-                .padding()
+                Text("Date is \(date.formatted(date: .long, time: .omitted))")
+                    .font(.title3)
+                
                 
                 NavigationLink(destination: CalendarProductData(productdate: date), label:{
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 365, height: 40)
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(Color.textField)
                         .overlay {
                             HStack{
                                 Text("Sell Today")
@@ -43,7 +30,7 @@ struct CalendarView: View {
                                     .foregroundStyle(Color.black)
                             }
                             .padding()
-                           
+                            
                         }
                     
                 })
@@ -51,7 +38,7 @@ struct CalendarView: View {
                 NavigationLink(destination: CalendarEventDate(eventdate: date), label:{
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 365, height: 40)
-                        .foregroundStyle(Color.white)
+                        .foregroundStyle(Color.textField)
                         .overlay {
                             HStack{
                                 Text("Event Today")
@@ -66,15 +53,23 @@ struct CalendarView: View {
                     
                 })
                 
-                
-                
-                
-                
-                
                 Spacer()
             }
             .background(Color.background)
             .navigationTitle("Calendar")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        showingSheetCalendar.toggle()
+                    } label: {
+                        Spacer()
+                        Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $showingSheetCalendar) {
+                        CreateEvent()
+                    }
+                }
+            }
         }
         
         
