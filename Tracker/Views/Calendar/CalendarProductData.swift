@@ -31,7 +31,6 @@ struct CalendarProductData: View {
                 viewModel.getSell()
             }
             
-            Text("")
             
     
         }
