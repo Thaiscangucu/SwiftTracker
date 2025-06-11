@@ -37,16 +37,16 @@ struct TrackerWidgetEntryView: View {
 
     var body: some View {
         ZStack {
-            Color(.systemBackground)
+    
             VStack(alignment: .leading, spacing: 8) {
                 Text("Vendas Hoje")
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.texto)
 
                 Text("R$ \(entry.totalSales, specifier: "%.2f")")
                     .font(.largeTitle)
                     .bold()
-                    .foregroundColor(.green)
+                    .foregroundColor(.texto)
             }
             .padding()
         }
@@ -60,6 +60,10 @@ struct TrackerWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             TrackerWidgetEntryView(entry: entry)
+                .containerBackground(for: .widget){
+                    LinearGradient(colors: [Color.backgroundGradient, Color.widgetBackground], startPoint: .bottom, endPoint: .top)
+                }
+            
         }
         .configurationDisplayName("Resumo de Vendas")
         .description("Veja rapidamente o total vendido hoje.")
