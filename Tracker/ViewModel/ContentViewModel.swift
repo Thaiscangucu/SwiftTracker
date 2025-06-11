@@ -109,8 +109,15 @@ class ContentViewModel: ObservableObject {
     }
 
     func getTodayEventCount() {
+        self.getEvent()
+        
         let today = Date().onlyDate
-        let count = events.filter { $0.dateEvent?.onlyDate == today }.count
+        var count = 0
+        for event in events{
+            if event.dateEvent?.onlyDate == today {
+                count += 1
+            }
+        }
         eventsToday = Double(count)
     }
 
@@ -133,6 +140,5 @@ class ContentViewModel: ObservableObject {
     func salvarTotalDeVendasParaWidget() {
         let defaults = UserDefaults(suiteName: "group.com.joaomirandawidget.swifttracker")
         defaults?.set(totalSell, forKey: "dailySales")
-        print("Total de vendas salvo no App Group: \(totalSell)")
     }
 }

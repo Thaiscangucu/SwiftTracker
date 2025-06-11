@@ -31,9 +31,11 @@ struct CardsSet: View {
                 
                 viewModel.totalSell = 0
                 viewModel.totalProducts = 0
+                viewModel.eventsToday = 0
                 
                 viewModel.updateSellValue(sells: viewModel.sells)
                 viewModel.updateProctCount(products: viewModel.products)
+                viewModel.getTodayEventCount()
             }
     }
 }
