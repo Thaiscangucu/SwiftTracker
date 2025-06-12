@@ -1,5 +1,6 @@
 import SwiftUI
 
+//MARK: - Create Component that displays in the list
 struct ProductView: View {
     @ObservedObject public var product: Product
     @ObservedObject var viewModel = ContentViewModel()
@@ -15,13 +16,13 @@ struct ProductView: View {
                     .bold()
                     .padding(.top, 0.5)
                 Spacer()
+                /*Edit Button*/
                 Image(systemName: "slider.horizontal.3")
                     .foregroundColor(.accent)
                     .onTapGesture {
                         showingEditSheet.toggle()
                         
                     }
-                
             }
             Divider()
             Text("Estoque: \(product.stock, specifier: "%.0f")")
@@ -35,6 +36,7 @@ struct ProductView: View {
                 .font(.callout)
                 .padding(.bottom)
             Divider()
+            /*Controls Sell log*/
             Stepper("Vendidas: \(product.sold, specifier: "%.0f")", onIncrement: {
                 viewModel.sellProduct(product)
                 totalSell += product.priceSell
@@ -48,8 +50,7 @@ struct ProductView: View {
                 viewModel.getProduct()
             }) {
                 EditProductVIew(product: product)
-            }
-            
+            }        
         }
         .onAppear(){
             viewModel.getProduct()

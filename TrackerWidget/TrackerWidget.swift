@@ -2,13 +2,13 @@
 import WidgetKit
 import SwiftUI
 
-// MARK: - Entry com total de vendas
+// MARK: - Total sells entry
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let totalSales: Double
 }
 
-// MARK: - Provider que lê os dados do App Group
+// MARK: - Read app group
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), totalSales: 0.0)
@@ -31,7 +31,7 @@ struct Provider: TimelineProvider {
     }
 }
 
-// MARK: - View do widget
+// MARK: - Widget View
 struct TrackerWidgetEntryView: View {
     var entry: Provider.Entry
 
@@ -53,7 +53,7 @@ struct TrackerWidgetEntryView: View {
     }
 }
 
-// MARK: - Widget principal
+// MARK: - Main Widget 
 struct TrackerWidget: Widget {
     let kind: String = "TrackerWidget"
 

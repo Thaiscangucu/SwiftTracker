@@ -11,11 +11,8 @@ struct MoneyCard: View {
         self.label = label
     }
     
-    //var cardText = textForCard(label: self.label)
     
-    var body: some View {
-        //TODO: - Verificador de casas para o label
-        
+    var body: some View {        
         VStack(alignment: .leading){
             Text(title)
                 .font(.system(size: 15))

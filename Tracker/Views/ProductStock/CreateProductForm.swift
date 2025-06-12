@@ -38,8 +38,7 @@ struct CreateProductForm: View {
                     }
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.textField)
-
-                    
+ 
                     HStack{
                         Text("Preço de Compra: ")
                         RoundedRectangle(cornerRadius: 5)
@@ -86,9 +85,7 @@ struct CreateProductForm: View {
 
                 }
                 .scrollContentBackground(.hidden)
-
-            
-                
+   
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     /*Save Button*/

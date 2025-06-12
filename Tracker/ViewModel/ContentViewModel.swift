@@ -5,6 +5,7 @@ import SwiftUI
 
 //MARK: - Chart ViewModel
 
+/*Aux Struct that interacts with core data and load info in memmory*/
 class LineChartItem: Identifiable {
     var date: Date = Date()
     var stock: Double = 0.0

@@ -1,5 +1,6 @@
 import Foundation
 
+//Mark: - Format Numbers so dont brake the layout
 
 func doubleMoneyFormatter(number: Double) -> String {
     let absNumber = abs(number) 
@@ -18,7 +19,7 @@ func doubleMoneyFormatter(number: Double) -> String {
 }
 
 func doubleFormatter(number: Double) -> String {
-    let absNumber = abs(number) // Para garantir que funcione com números negativos
+    let absNumber = abs(number) // Garantee negative numbers
     let sign = number < 0 ? "-" : ""
 
     switch absNumber {

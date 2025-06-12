@@ -15,7 +15,6 @@ struct ProductStockView: View {
         }
     }
     
-    
     var body: some View {
         
         NavigationStack {

@@ -2,13 +2,13 @@
 import WidgetKit
 import SwiftUI
 
-// MARK: - Entry com total de eventos
+// MARK: - Total event entry
 struct EventEntry: TimelineEntry {
     let date: Date
     let totalEvents: Double
 }
 
-// MARK: - Provider que lê os dados do App Group
+// MARK: - Read app group
 struct EventProvider: TimelineProvider {
     func placeholder(in context: Context) -> EventEntry {
         EventEntry(date: Date(), totalEvents: 0)
@@ -31,7 +31,7 @@ struct EventProvider: TimelineProvider {
     }
 }
 
-// MARK: - View do widget
+// MARK: - Widget View
 struct EventCountWidgetEntryView: View {
     var entry: EventProvider.Entry
 

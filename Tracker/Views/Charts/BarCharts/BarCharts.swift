@@ -26,7 +26,6 @@ struct ProductBarCharts: View {
                 .chartYAxis(.hidden)
                 .background(.textField)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                //.padding(.vertical)
                 .padding(.bottom, 0.5)
                 .shadow(radius: 5)
             } else {

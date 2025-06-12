@@ -1,6 +1,8 @@
 import SwiftUI
 import Charts
 
+/*Aux Stuct that interacts with coredata. Some charts do not interact directly with coreData*/
+
 struct PieProfitChart: Identifiable {
     let id = UUID()
     let title: String
@@ -34,7 +36,7 @@ struct ProductSellPieChart: View {
                 .padding()
                 .background(Color(.textField))
                 .clipShape(RoundedRectangle(cornerRadius: 15))
-                .tint(Color("textColor")) // legenda estilizada
+                .tint(Color("textColor")) // Change leged collor
                 .shadow(radius: 5)
             } else {
                 Text("Sem dados para exibir o gráfico.")

@@ -55,7 +55,6 @@ struct EditProductVIew: View {
                         TextField("", value: $priceSell, format: .number)
                             .foregroundStyle(.secondary)
 
-
                     }
                     .listRowBackground(Color.textField)
 

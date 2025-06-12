@@ -7,9 +7,8 @@ struct CardsSet: View {
     
     @StateObject var viewModel: ContentViewModel
     
-    
+    //MARK: - Unify all cards
     var body: some View {
-            //TODO: - Fix Collors and parameters
             HStack{
                 Spacer()
                 DoubleCard(title: "Produtos", label: doubleFormatter(number: viewModel.totalProducts))
