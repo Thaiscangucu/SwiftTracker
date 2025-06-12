@@ -37,16 +37,15 @@ struct EventCountWidgetEntryView: View {
 
     var body: some View {
         ZStack {
-            Color(.systemBackground)
             VStack(alignment: .leading, spacing: 8) {
                 Text("Eventos Hoje")
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.texto)
 
                 Text("\(Int(entry.totalEvents))")
                     .font(.title)
                     .bold()
-                    .foregroundColor(.blue)
+                    .foregroundColor(.texto)
             }
             .padding()
         }
@@ -60,6 +59,9 @@ struct EventCountWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: EventProvider()) { entry in
             EventCountWidgetEntryView(entry: entry)
+                .containerBackground(for: .widget){
+                    LinearGradient(colors: [Color.backgroundGradient, Color.widgetBackground], startPoint: .bottom, endPoint: .top)
+                }
         }
         .configurationDisplayName("Contagem de Eventos")
         .description("Veja quantos eventos você tem hoje.")

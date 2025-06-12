@@ -12,7 +12,7 @@ struct MoneyCard: View {
     }
     
     
-    var body: some View {        
+    var body: some View {
         VStack(alignment: .leading){
             Text(title)
                 .font(.system(size: 15))
