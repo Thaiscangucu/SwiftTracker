@@ -120,9 +120,7 @@ class ContentViewModel: ObservableObject {
             }
         }
         eventsToday = Double(count)
-        
-        let defaults = UserDefaults(suiteName: "group.com.joaomirandawidget.swifttracker")
-        defaults?.set(eventsToday, forKey: "dailyEvents")
+        saveWidgetEvents()
     }
 
     //MARK: - Creating Chart Structs
@@ -144,5 +142,10 @@ class ContentViewModel: ObservableObject {
     func saveWidgetSells() {
         let defaults = UserDefaults(suiteName: "group.com.joaomirandawidget.swifttracker")
         defaults?.set(totalSell, forKey: "dailySales")
+    }
+    
+    func saveWidgetEvents() {
+        let defaults = UserDefaults(suiteName: "group.com.joaomirandawidget.swifttracker")
+        defaults?.set(eventsToday, forKey: "dailyEvents")
     }
 }

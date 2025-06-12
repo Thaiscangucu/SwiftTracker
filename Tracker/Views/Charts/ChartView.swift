@@ -23,7 +23,7 @@ struct ChartView: View {
                         Spacer()
                         SellsLineChart(LineData: viewModel.linearSellsData)
                     }
-                    .padding(.horizontal)   
+                    .padding(.horizontal)
                 }
             }
             .background(Color.background)

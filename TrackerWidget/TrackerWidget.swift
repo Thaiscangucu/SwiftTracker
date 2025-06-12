@@ -21,7 +21,7 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         let entry = SimpleEntry(date: Date(), totalSales: readTotalSell())
-        let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60 * 15)))
+        let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60 * 1)))
         completion(timeline)
     }
 

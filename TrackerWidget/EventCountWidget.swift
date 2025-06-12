@@ -26,7 +26,7 @@ struct EventProvider: TimelineProvider {
     }
 
     private func lerEventosDoDia() -> Double {
-        let defaults = UserDefaults(suiteName: "group.com.joaovitor.swifttracker")
+        let defaults = UserDefaults(suiteName: "group.com.joaomirandawidget.swifttracker")
         return defaults?.double(forKey: "dailyEvents") ?? 0
     }
 }
