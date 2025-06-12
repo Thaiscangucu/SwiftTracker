@@ -119,6 +119,9 @@ class ContentViewModel: ObservableObject {
             }
         }
         eventsToday = Double(count)
+        
+        let defaults = UserDefaults(suiteName: "group.com.joaomirandawidget.swifttracker")
+        defaults?.set(eventsToday, forKey: "dailyEvents")
     }
 
     //MARK: - Creating Chart Structs
