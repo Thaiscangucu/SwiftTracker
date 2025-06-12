@@ -15,17 +15,17 @@ struct Provider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(date: Date(), totalSales: lerTotalDeVendas())
+        let entry = SimpleEntry(date: Date(), totalSales: readTotalSell())
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
-        let entry = SimpleEntry(date: Date(), totalSales: lerTotalDeVendas())
+        let entry = SimpleEntry(date: Date(), totalSales: readTotalSell())
         let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(60 * 15)))
         completion(timeline)
     }
 
-    private func lerTotalDeVendas() -> Double {
+    private func readTotalSell() -> Double {
         let defaults = UserDefaults(suiteName: "group.com.joaomirandawidget.swifttracker")
         return defaults?.double(forKey: "dailySales") ?? 0.0
     }

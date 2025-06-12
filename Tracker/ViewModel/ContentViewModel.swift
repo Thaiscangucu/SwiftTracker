@@ -59,7 +59,7 @@ class ContentViewModel: ObservableObject {
         for sell in sells {
             totalSell += sell.price
         }
-        salvarTotalDeVendasParaWidget()
+        saveWidgetSells()
     }
 
     func getSell() {
@@ -140,7 +140,7 @@ class ContentViewModel: ObservableObject {
     }
 
     //MARK: - Widget Integration
-    func salvarTotalDeVendasParaWidget() {
+    func saveWidgetSells() {
         let defaults = UserDefaults(suiteName: "group.com.joaomirandawidget.swifttracker")
         defaults?.set(totalSell, forKey: "dailySales")
     }
